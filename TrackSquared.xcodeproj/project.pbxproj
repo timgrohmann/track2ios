@@ -7,15 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A44A4D21973FD80058C966 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4C21973FD80058C966 /* global.swift */; };
+		18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4F219748A80058C966 /* CJTableViewCell.swift */; };
+		18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */; };
+		18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CB121996DDE00372162 /* StationSelectViewController.swift */; };
+		18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D37CB221996DDE00372162 /* StationSelectView.xib */; };
+		18D37CB621997E3400372162 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CB521997E3400372162 /* DataController.swift */; };
+		18D37CB82199825F00372162 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CB72199825F00372162 /* StationTableViewCell.swift */; };
 		18E071142196D1D600761D4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E071132196D1D600761D4D /* AppDelegate.swift */; };
 		18E071162196D1D600761D4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E071152196D1D600761D4D /* ViewController.swift */; };
 		18E071192196D1D600761D4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E071172196D1D600761D4D /* Main.storyboard */; };
 		18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */; };
 		18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711D2196D1D700761D4D /* Assets.xcassets */; };
 		18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */; };
+		18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */; };
+		18F90630219ADB4200505A9A /* DS100.csv in Resources */ = {isa = PBXBuildFile; fileRef = 18F9062F219ADB4200505A9A /* DS100.csv */; };
+		18F90632219ADB6300505A9A /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F90631219ADB6300505A9A /* CSVParser.swift */; };
+		18F90635219C266300505A9A /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F90634219C266300505A9A /* Train.swift */; };
+		18F90639219C4E1100505A9A /* TrainSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F90637219C4E1100505A9A /* TrainSelectViewController.swift */; };
+		18F9063A219C4E1100505A9A /* TrainSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F90638219C4E1100505A9A /* TrainSelectViewController.xib */; };
+		18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9063E219C6D5500505A9A /* ButtonDesignable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18A44A4C21973FD80058C966 /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		18A44A4F219748A80058C966 /* CJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJTableViewCell.swift; sourceTree = "<group>"; };
+		18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardUnboardViewController.swift; sourceTree = "<group>"; };
+		18D37CB121996DDE00372162 /* StationSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectViewController.swift; sourceTree = "<group>"; };
+		18D37CB221996DDE00372162 /* StationSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationSelectView.xib; sourceTree = "<group>"; };
+		18D37CB521997E3400372162 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		18D37CB72199825F00372162 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		18E071102196D1D600761D4D /* TrackSquared.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackSquared.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E071132196D1D600761D4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18E071152196D1D600761D4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +45,13 @@
 		18E0711D2196D1D700761D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E071202196D1D700761D4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E071222196D1D700761D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
+		18F9062F219ADB4200505A9A /* DS100.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DS100.csv; sourceTree = "<group>"; };
+		18F90631219ADB6300505A9A /* CSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
+		18F90634219C266300505A9A /* Train.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
+		18F90637219C4E1100505A9A /* TrainSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSelectViewController.swift; sourceTree = "<group>"; };
+		18F90638219C4E1100505A9A /* TrainSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainSelectViewController.xib; sourceTree = "<group>"; };
+		18F9063E219C6D5500505A9A /* ButtonDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDesignable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,9 +65,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A44A4E219748850058C966 /* CurrentJourneyTableView */ = {
+			isa = PBXGroup;
+			children = (
+				18A44A4F219748A80058C966 /* CJTableViewCell.swift */,
+			);
+			path = CurrentJourneyTableView;
+			sourceTree = "<group>";
+		};
+		18D37CA821996B4D00372162 /* StationSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				18D37CB121996DDE00372162 /* StationSelectViewController.swift */,
+				18D37CB221996DDE00372162 /* StationSelectView.xib */,
+				18D37CB72199825F00372162 /* StationTableViewCell.swift */,
+				18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */,
+			);
+			path = StationSelectView;
+			sourceTree = "<group>";
+		};
 		18E071072196D1D600761D4D = {
 			isa = PBXGroup;
 			children = (
+				18F9062E219ADB2C00505A9A /* Resources */,
 				18E071122196D1D600761D4D /* TrackSquared */,
 				18E071112196D1D600761D4D /* Products */,
 			);
@@ -56,15 +104,57 @@
 		18E071122196D1D600761D4D /* TrackSquared */ = {
 			isa = PBXGroup;
 			children = (
-				18E071132196D1D600761D4D /* AppDelegate.swift */,
-				18E071152196D1D600761D4D /* ViewController.swift */,
-				18E071172196D1D600761D4D /* Main.storyboard */,
-				18E0711D2196D1D700761D4D /* Assets.xcassets */,
-				18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */,
 				18E071222196D1D700761D4D /* Info.plist */,
+				18F90636219C315000505A9A /* TrainSelectView */,
+				18D37CA821996B4D00372162 /* StationSelectView */,
+				18A44A4E219748850058C966 /* CurrentJourneyTableView */,
+				18E071282196D1E800761D4D /* Data */,
+				18E071132196D1D600761D4D /* AppDelegate.swift */,
+				18E071172196D1D600761D4D /* Main.storyboard */,
+				18E071152196D1D600761D4D /* ViewController.swift */,
+				18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */,
+				18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */,
 				18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */,
+				18A44A4C21973FD80058C966 /* global.swift */,
+				18F9063D219C6D3700505A9A /* UIElements */,
+				18E0711D2196D1D700761D4D /* Assets.xcassets */,
 			);
 			path = TrackSquared;
+			sourceTree = "<group>";
+		};
+		18E071282196D1E800761D4D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				18D37CB521997E3400372162 /* DataController.swift */,
+				18F90631219ADB6300505A9A /* CSVParser.swift */,
+				18F90634219C266300505A9A /* Train.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		18F9062E219ADB2C00505A9A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18F9062F219ADB4200505A9A /* DS100.csv */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		18F90636219C315000505A9A /* TrainSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				18F90637219C4E1100505A9A /* TrainSelectViewController.swift */,
+				18F90638219C4E1100505A9A /* TrainSelectViewController.xib */,
+			);
+			path = TrainSelectView;
+			sourceTree = "<group>";
+		};
+		18F9063D219C6D3700505A9A /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				18F9063E219C6D5500505A9A /* ButtonDesignable.swift */,
+			);
+			path = UIElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +167,7 @@
 				18E0710C2196D1D600761D4D /* Sources */,
 				18E0710D2196D1D600761D4D /* Frameworks */,
 				18E0710E2196D1D600761D4D /* Resources */,
+				18F90633219B1A6900505A9A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -126,21 +217,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */,
+				18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */,
+				18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */,
+				18F90630219ADB4200505A9A /* DS100.csv in Resources */,
 				18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */,
 				18E071192196D1D600761D4D /* Main.storyboard in Resources */,
+				18F9063A219C4E1100505A9A /* TrainSelectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18F90633219B1A6900505A9A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18E0710C2196D1D600761D4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */,
+				18A44A4D21973FD80058C966 /* global.swift in Sources */,
+				18F90635219C266300505A9A /* Train.swift in Sources */,
+				18F90639219C4E1100505A9A /* TrainSelectViewController.swift in Sources */,
 				18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */,
+				18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */,
+				18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */,
+				18F90632219ADB6300505A9A /* CSVParser.swift in Sources */,
+				18D37CB82199825F00372162 /* StationTableViewCell.swift in Sources */,
+				18D37CB621997E3400372162 /* DataController.swift in Sources */,
 				18E071162196D1D600761D4D /* ViewController.swift in Sources */,
 				18E071142196D1D600761D4D /* AppDelegate.swift in Sources */,
+				18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +349,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -279,6 +405,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};
@@ -289,6 +416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
 				INFOPLIST_FILE = TrackSquared/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,6 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
 				INFOPLIST_FILE = TrackSquared/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,7 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
