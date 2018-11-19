@@ -17,11 +17,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var stationLabel: UILabel!
     @IBOutlet weak var devVersionLabel: UILabel!
     @IBOutlet weak var boardUnboardButton: ButtonDesignable!
+    @IBOutlet weak var quitJourneyButton: ButtonDesignable!
     @IBOutlet weak var journeyTableView: UITableView!
     
     let dc = DataController()
     
-    
+    var timeTimer: Timer?
     var user: User?
         
     override func viewDidLoad() {
@@ -89,6 +90,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let v = infoDict["CFBundleVersion"] as? String{
             devVersionLabel.text = "Development Version Build " + v
         }
+        
+        timeTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
+            _ in
+            if let startDate = self.user?.currentPart?.start?.time {
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute]
+                formatter.unitsStyle = .positional
+                
+                self.timeLabel.text = formatter.string(from: Date().timeIntervalSince(startDate))
+            }
+        }
+        timeTimer?.fire()
 
         delegate.saveContext()
         displayCurrentPart()
@@ -119,8 +132,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let sinceDate = currentPart.start?.time {
             sinceLabel.text = "seit " + DateFormatter.localizedString(from: sinceDate, dateStyle: .none, timeStyle: .short)
         }
+        
+        quitJourneyButton.isEnabled = (user?.currentJourney?.parts?.count ?? 0) > 0
+    }
+    
+    @IBAction func quitJourneyButtonPressed(_ sender: Any) {
+        if let cJourney = user?.currentJourney, (cJourney.parts?.count ?? 0) > 0 {
+            user?.addToJourneys(cJourney)
+            cJourney.currentOfUser = nil
+            cJourney.forUser = user
+            
+            user?.currentJourney = Journey(context: managedObjectContext)
+            user?.currentJourney?.currentOfUser = user
+            dc.save()
+        }
     }
 
+    // MARK: - Table View
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (user?.currentJourney?.parts?.count ?? 0)
     }
@@ -137,12 +166,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let len = user?.currentJourney?.parts?.count else {
             fatalError("No journey")
         }
-        guard let part = user?.currentJourney?.parts?.array[len-1-ind] as? JouneyPart,
-              let start = part.start,
-              let goal = part.goal else {
+        guard let part = user?.currentJourney?.parts?.array[len-1-ind] as? JouneyPart else {
             fatalError("No events")
         }
-        cell.displayPart(t1: start, t2: goal)
+        cell.displayPart(part: part)
         return cell
     }
     
@@ -158,6 +185,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
     }
-
 }
 

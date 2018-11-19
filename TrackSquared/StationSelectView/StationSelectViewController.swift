@@ -48,14 +48,13 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         finishedWithResult(nil)
     }
     
-    
-    
     func finishedWithResult(_ stat: Station?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
         selectedCallback(stat)
     }
     
+    // MARK: - Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stations.count
     }
@@ -77,6 +76,8 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         finishedWithResult(stations[indexPath.last!])
     }
 
+    // MARK: - Text field
+    
     @IBAction func searchValueChanged(_ sender: Any) {
         let s = searchTextField.text ?? ""
         stations = controller.searchStations(search: s)

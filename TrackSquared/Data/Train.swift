@@ -30,6 +30,9 @@ extension Train {
         }
     }
     
+    /**
+     * A printable description of this train object.
+     */
     func stringRepresentation() -> String {
         return String(format: "%@ %@", Train.typeNameMap[self.type] ?? "?", self.number ?? "?")
     }

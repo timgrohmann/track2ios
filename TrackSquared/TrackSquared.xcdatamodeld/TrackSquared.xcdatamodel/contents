@@ -10,7 +10,7 @@
     <entity name="Journey" representedClassName="Journey" syncable="YES" codeGenerationType="class">
         <relationship name="currentOfUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="currentJourney" inverseEntity="User" syncable="YES"/>
         <relationship name="forUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="journeys" inverseEntity="User" syncable="YES"/>
-        <relationship name="parts" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="JouneyPart" inverseName="journey" inverseEntity="JouneyPart" syncable="YES"/>
+        <relationship name="parts" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="JouneyPart" inverseName="journey" inverseEntity="JouneyPart" syncable="YES"/>
     </entity>
     <entity name="Station" representedClassName="Station" syncable="YES" codeGenerationType="class">
         <attribute name="code" attributeType="String" syncable="YES"/>
@@ -38,7 +38,7 @@
     </entity>
     <elements>
         <element name="JouneyPart" positionX="56.10546875" positionY="36.2421875" width="128" height="118"/>
-        <element name="Journey" positionX="-125.6640625" positionY="51.62109375" width="128" height="88"/>
+        <element name="Journey" positionX="-125.6640625" positionY="51.62109375" width="128" height="90"/>
         <element name="Station" positionX="464.359375" positionY="41.8828125" width="128" height="90"/>
         <element name="Train" positionX="257.44140625" positionY="136.10546875" width="128" height="90"/>
         <element name="TrainEvent" positionX="256.125" positionY="9.984375" width="128" height="120"/>

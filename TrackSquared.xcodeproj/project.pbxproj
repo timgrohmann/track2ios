@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDFCA21A02594000105C2 /* TrainEvent.swift */; };
+		186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */; };
+		186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */; };
 		18A44A4D21973FD80058C966 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4C21973FD80058C966 /* global.swift */; };
 		18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4F219748A80058C966 /* CJTableViewCell.swift */; };
+		18CF674621A1D41700F10BFF /* JourneyArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */; };
+		18CF674821A1D44600F10BFF /* JourneyArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */; };
 		18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */; };
 		18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CB121996DDE00372162 /* StationSelectViewController.swift */; };
 		18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D37CB221996DDE00372162 /* StationSelectView.xib */; };
@@ -30,8 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181EDFCA21A02594000105C2 /* TrainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEvent.swift; sourceTree = "<group>"; };
+		186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleJourneyHistoryViewController.swift; sourceTree = "<group>"; };
+		186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHistoryPartTableViewCell.swift; sourceTree = "<group>"; };
 		18A44A4C21973FD80058C966 /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		18A44A4F219748A80058C966 /* CJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJTableViewCell.swift; sourceTree = "<group>"; };
+		18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveViewController.swift; sourceTree = "<group>"; };
+		18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardUnboardViewController.swift; sourceTree = "<group>"; };
 		18D37CB121996DDE00372162 /* StationSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectViewController.swift; sourceTree = "<group>"; };
 		18D37CB221996DDE00372162 /* StationSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationSelectView.xib; sourceTree = "<group>"; };
@@ -65,12 +75,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		186C57DC21A2B95A00F3BC04 /* SingleJourneyHistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */,
+				186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */,
+			);
+			path = SingleJourneyHistoryViewController;
+			sourceTree = "<group>";
+		};
 		18A44A4E219748850058C966 /* CurrentJourneyTableView */ = {
 			isa = PBXGroup;
 			children = (
 				18A44A4F219748A80058C966 /* CJTableViewCell.swift */,
 			);
 			path = CurrentJourneyTableView;
+			sourceTree = "<group>";
+		};
+		18CF674421A1D3E400F10BFF /* JourneyArchive */ = {
+			isa = PBXGroup;
+			children = (
+				18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */,
+				18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */,
+			);
+			path = JourneyArchive;
 			sourceTree = "<group>";
 		};
 		18D37CA821996B4D00372162 /* StationSelectView */ = {
@@ -108,7 +136,9 @@
 				18F90636219C315000505A9A /* TrainSelectView */,
 				18D37CA821996B4D00372162 /* StationSelectView */,
 				18A44A4E219748850058C966 /* CurrentJourneyTableView */,
+				18CF674421A1D3E400F10BFF /* JourneyArchive */,
 				18E071282196D1E800761D4D /* Data */,
+				186C57DC21A2B95A00F3BC04 /* SingleJourneyHistoryViewController */,
 				18E071132196D1D600761D4D /* AppDelegate.swift */,
 				18E071172196D1D600761D4D /* Main.storyboard */,
 				18E071152196D1D600761D4D /* ViewController.swift */,
@@ -128,6 +158,7 @@
 				18D37CB521997E3400372162 /* DataController.swift */,
 				18F90631219ADB6300505A9A /* CSVParser.swift */,
 				18F90634219C266300505A9A /* Train.swift */,
+				181EDFCA21A02594000105C2 /* TrainEvent.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -254,16 +285,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */,
+				18CF674621A1D41700F10BFF /* JourneyArchiveViewController.swift in Sources */,
 				18A44A4D21973FD80058C966 /* global.swift in Sources */,
 				18F90635219C266300505A9A /* Train.swift in Sources */,
 				18F90639219C4E1100505A9A /* TrainSelectViewController.swift in Sources */,
 				18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */,
+				181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */,
+				18CF674821A1D44600F10BFF /* JourneyArchiveTableViewCell.swift in Sources */,
 				18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */,
 				18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */,
+				186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */,
 				18F90632219ADB6300505A9A /* CSVParser.swift in Sources */,
 				18D37CB82199825F00372162 /* StationTableViewCell.swift in Sources */,
 				18D37CB621997E3400372162 /* DataController.swift in Sources */,
 				18E071162196D1D600761D4D /* ViewController.swift in Sources */,
+				186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */,
 				18E071142196D1D600761D4D /* AppDelegate.swift in Sources */,
 				18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */,
 			);

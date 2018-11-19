@@ -67,6 +67,7 @@ class BoardUnboardViewController: UIViewController {
         let u = dc.getUser()
         
         if let p = u.currentPart {
+            // Current part exists, so this is the end of the part
             let endEv = TrainEvent(context: managedObjectContext)
             
             endEv.goalOfPart = p
@@ -82,6 +83,7 @@ class BoardUnboardViewController: UIViewController {
             
             u.currentPart = nil
         } else {
+            // Current part does not yet exist, so this is a new one
             let newPart = JouneyPart(context: managedObjectContext)
             
             let startEv = TrainEvent(context: managedObjectContext)
