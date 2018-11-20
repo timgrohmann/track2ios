@@ -30,59 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         dc.prepare()
         
-        
-        let userFetch: NSFetchRequest<User> = NSFetchRequest(entityName: "User")
-        var users: [User] = []
-        do {
-            users = try managedObjectContext.fetch(userFetch)
-        } catch {
-            fatalError("User could not be fetched/created: \(error)")
-        }
-        
-        /*if users.count == 1 {
-            managedObjectContext.delete(users[0])
-            users = []
-        }*/
-        
-        if users.count == 1 {
-            user = users[0]
-            //user?.currentPart = nil
-            //managedObjectContext.delete(journeys[0])
-        } else {
-            //DEBUG CODE
-            let station = dc.getStation(code: "RM")!
-            let station2 = dc.getStation(code: "BL")!
-            
-            
-            let ev1 = TrainEvent(context: managedObjectContext)
-            ev1.station = station
-            ev1.time = Date(timeIntervalSinceNow: -60 * 60 * 24 * 5)
-            ev1.scheduledTime = ev1.time
-            let ev2 = TrainEvent(context: managedObjectContext)
-            ev2.station = station2
-            ev2.time = Date(timeIntervalSinceNow: -60)
-            ev2.scheduledTime = ev2.time
-            
-            let part = JouneyPart(context: managedObjectContext)
-            part.start = ev1
-            part.goal = ev2
-            
-            let journey = Journey(context: managedObjectContext)
-            journey.addToParts(part)
-            
-            let cPart = JouneyPart(context: managedObjectContext)
-            cPart.start = TrainEvent(context: managedObjectContext)
-            cPart.start?.time = Date()
-            cPart.start?.station = station2
-            cPart.start?.scheduledTime = cPart.start?.time
-            
-            user = User(context: managedObjectContext)
-            user?.currentJourney = journey
-            journey.forUser = user
-            
-            
-            print("Added new j")
-        }
+        user = dc.getUser()
         
         
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
@@ -99,6 +47,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 formatter.unitsStyle = .positional
                 
                 self.timeLabel.text = formatter.string(from: Date().timeIntervalSince(startDate))
+            } else {
+                self.timeLabel.text = "--:--"
             }
         }
         timeTimer?.fire()
@@ -120,6 +70,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func displayCurrentPart() {
+        quitJourneyButton.isEnabled = (user?.currentJourney?.parts?.count ?? 0) > 0
+
         guard let currentPart = user?.currentPart else {
             stationLabel.text = ""
             trainLabel.text = "---"
@@ -132,8 +84,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let sinceDate = currentPart.start?.time {
             sinceLabel.text = "seit " + DateFormatter.localizedString(from: sinceDate, dateStyle: .none, timeStyle: .short)
         }
-        
-        quitJourneyButton.isEnabled = (user?.currentJourney?.parts?.count ?? 0) > 0
     }
     
     @IBAction func quitJourneyButtonPressed(_ sender: Any) {
@@ -142,9 +92,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cJourney.currentOfUser = nil
             cJourney.forUser = user
             
-            user?.currentJourney = Journey(context: managedObjectContext)
+            user?.currentJourney = dc.makeJourney()
             user?.currentJourney?.currentOfUser = user
             dc.save()
+            journeyTableView.reloadData()
         }
     }
 
@@ -166,7 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         guard let len = user?.currentJourney?.parts?.count else {
             fatalError("No journey")
         }
-        guard let part = user?.currentJourney?.parts?.array[len-1-ind] as? JouneyPart else {
+        guard let part = user?.currentJourney?.parts?.array[len-1-ind] as? JourneyPart else {
             fatalError("No events")
         }
         cell.displayPart(part: part)
@@ -176,9 +127,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if  let len = user?.currentJourney?.parts?.count,
-                let p = user?.currentJourney?.parts?.array[len-1-indexPath.row] as? JouneyPart {
+                let p = user?.currentJourney?.parts?.array[len-1-indexPath.row] as? JourneyPart {
                 user?.currentJourney?.removeFromParts(p)
-                managedObjectContext.delete(p)
+                dc.delete(p)
                 delegate.saveContext()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }

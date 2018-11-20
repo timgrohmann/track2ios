@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="JouneyPart" representedClassName="JouneyPart" syncable="YES" codeGenerationType="class">
+    <entity name="Journey" representedClassName="Journey" syncable="YES" codeGenerationType="class">
+        <relationship name="currentOfUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="currentJourney" inverseEntity="User" syncable="YES"/>
+        <relationship name="forUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="journeys" inverseEntity="User" syncable="YES"/>
+        <relationship name="parts" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="JourneyPart" inverseName="journey" inverseEntity="JourneyPart" syncable="YES"/>
+    </entity>
+    <entity name="JourneyPart" representedClassName="JourneyPart" syncable="YES" codeGenerationType="class">
         <relationship name="currentForUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="currentPart" inverseEntity="User" syncable="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TrainEvent" inverseName="goalOfPart" inverseEntity="TrainEvent" syncable="YES"/>
         <relationship name="journey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journey" inverseName="parts" inverseEntity="Journey" syncable="YES"/>
         <relationship name="start" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TrainEvent" inverseName="startOfPart" inverseEntity="TrainEvent" syncable="YES"/>
         <relationship name="train" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="inParts" inverseEntity="Train" syncable="YES"/>
-    </entity>
-    <entity name="Journey" representedClassName="Journey" syncable="YES" codeGenerationType="class">
-        <relationship name="currentOfUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="currentJourney" inverseEntity="User" syncable="YES"/>
-        <relationship name="forUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="journeys" inverseEntity="User" syncable="YES"/>
-        <relationship name="parts" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="JouneyPart" inverseName="journey" inverseEntity="JouneyPart" syncable="YES"/>
     </entity>
     <entity name="Station" representedClassName="Station" syncable="YES" codeGenerationType="class">
         <attribute name="code" attributeType="String" syncable="YES"/>
@@ -20,24 +20,24 @@
     <entity name="Train" representedClassName="Train" syncable="YES" codeGenerationType="class">
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="raw_type" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="inParts" toMany="YES" deletionRule="Deny" destinationEntity="JouneyPart" inverseName="train" inverseEntity="JouneyPart" syncable="YES"/>
+        <relationship name="inParts" toMany="YES" deletionRule="Deny" destinationEntity="JourneyPart" inverseName="train" inverseEntity="JourneyPart" syncable="YES"/>
     </entity>
     <entity name="TrainEvent" representedClassName="TrainEvent" syncable="YES" codeGenerationType="class">
         <attribute name="scheduledTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="goalOfPart" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="JouneyPart" inverseName="goal" inverseEntity="JouneyPart" syncable="YES"/>
-        <relationship name="startOfPart" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="JouneyPart" inverseName="start" inverseEntity="JouneyPart" syncable="YES"/>
+        <relationship name="goalOfPart" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="JourneyPart" inverseName="goal" inverseEntity="JourneyPart" syncable="YES"/>
+        <relationship name="startOfPart" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="JourneyPart" inverseName="start" inverseEntity="JourneyPart" syncable="YES"/>
         <relationship name="station" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="inEvents" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userSince" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="currentJourney" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journey" inverseName="currentOfUser" inverseEntity="Journey" syncable="YES"/>
-        <relationship name="currentPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JouneyPart" inverseName="currentForUser" inverseEntity="JouneyPart" syncable="YES"/>
+        <relationship name="currentPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JourneyPart" inverseName="currentForUser" inverseEntity="JourneyPart" syncable="YES"/>
         <relationship name="journeys" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Journey" inverseName="forUser" inverseEntity="Journey" syncable="YES"/>
     </entity>
     <elements>
-        <element name="JouneyPart" positionX="56.10546875" positionY="36.2421875" width="128" height="118"/>
+        <element name="JourneyPart" positionX="56.10546875" positionY="36.2421875" width="128" height="120"/>
         <element name="Journey" positionX="-125.6640625" positionY="51.62109375" width="128" height="90"/>
         <element name="Station" positionX="464.359375" positionY="41.8828125" width="128" height="90"/>
         <element name="Train" positionX="257.44140625" positionY="136.10546875" width="128" height="90"/>

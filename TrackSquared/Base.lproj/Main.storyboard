@@ -483,6 +483,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OAC-2f-snu"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Reise am" id="JlI-du-EPV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="GUg-z8-CcN">
+                            <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="makeCurrentAgainButtonPressed:" destination="Guz-72-Lnr" id="GeD-Sn-X3g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSb-EC-poB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

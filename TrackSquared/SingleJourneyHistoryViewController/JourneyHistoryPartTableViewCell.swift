@@ -20,7 +20,7 @@ class JourneyHistoryPartTableViewCell: UITableViewCell {
     @IBInspectable var negativeOrNoDelayTextColor: UIColor?
     
 
-    func displayPart(part: JouneyPart) {
+    func displayPart(part: JourneyPart) {
         if let startEv = part.start, let goalEv = part.goal {
             startStationLabel.text = startEv.station?.name
             goalStationLabel.text = goalEv.station?.name

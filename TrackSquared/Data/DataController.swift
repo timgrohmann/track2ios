@@ -13,13 +13,19 @@ class DataController {
     let ctx: NSManagedObjectContext
     
     init() {
-        ctx = managedObjectContext
+        ctx = delegate.persistentContainer.viewContext
     }
     
     func prepare() {
         if getStations().count == 0 {
             print("Loading stations from csv")
             CSVParser().loadStationsFromSave()
+        }
+        
+        let fetch = NSFetchRequest<User>(entityName: "User")
+        if executeFetch(fetch: fetch).count == 0 {
+            let u = User(context: ctx)
+            u.currentJourney = makeJourney()
         }
         save()
     }
@@ -30,6 +36,10 @@ class DataController {
     func getStations() -> [Station] {
         let fetch = NSFetchRequest<Station>(entityName: "Station")
         return executeFetch(fetch: fetch)
+    }
+    
+    func makeStation() -> Station {
+        return Station(context: ctx)
     }
     
     /**
@@ -103,9 +113,25 @@ class DataController {
         return nil
     }
     
+    func makeTrain() -> Train {
+        return Train(context: ctx)
+    }
+    
+    func makeTrainEvent() -> TrainEvent {
+        return TrainEvent(context: ctx)
+    }
+    
     func getJourneys() -> [Journey] {
         let fetch = NSFetchRequest<Journey>(entityName: "Journey")
         return executeFetch(fetch: fetch)
+    }
+    
+    func makeJourney() -> Journey {
+        return Journey(context: ctx)
+    }
+    
+    func makeJourneyPart() -> JourneyPart {
+        return JourneyPart(context: ctx)
     }
     
     /**
@@ -124,7 +150,7 @@ class DataController {
      */
     private func executeFetch<T>(fetch: NSFetchRequest<T>) -> [T] {
         do {
-            return try managedObjectContext.fetch(fetch)
+            return try ctx.fetch(fetch)
         } catch {
             fatalError("User could not be fetched/created: \(error)")
             //return []
@@ -136,6 +162,10 @@ class DataController {
      */
     func save() {
         delegate.saveContext()
+    }
+    
+    func delete(_ obj: NSManagedObject) {
+        ctx.delete(obj)
     }
     
 }

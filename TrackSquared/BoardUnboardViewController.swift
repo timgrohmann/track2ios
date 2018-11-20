@@ -28,6 +28,7 @@ class BoardUnboardViewController: UIViewController {
 
         if let part = dc.getUser().currentPart {
             self.title = "Aussteigen"
+            currentlySelectedTrain = part.train
             selectTrainButton.isEnabled = false
             selectTrainButton.setTitle(part.train?.stringRepresentation() ?? "", for: .normal)
             selectTrainButton.setTitleColor(UIColor.darkGray, for: .normal)
@@ -64,11 +65,17 @@ class BoardUnboardViewController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
+        if currentlySelectedTrain == nil || currentlySelectedStation == nil {
+            //TODO: Tell user to enter remaining data
+            return
+        }
+        
+        
         let u = dc.getUser()
         
         if let p = u.currentPart {
             // Current part exists, so this is the end of the part
-            let endEv = TrainEvent(context: managedObjectContext)
+            let endEv = dc.makeTrainEvent()
             
             endEv.goalOfPart = p
             p.goal = endEv
@@ -84,9 +91,9 @@ class BoardUnboardViewController: UIViewController {
             u.currentPart = nil
         } else {
             // Current part does not yet exist, so this is a new one
-            let newPart = JouneyPart(context: managedObjectContext)
+            let newPart = dc.makeJourneyPart()
             
-            let startEv = TrainEvent(context: managedObjectContext)
+            let startEv = dc.makeTrainEvent()
             
             startEv.startOfPart = newPart
             newPart.start = startEv
@@ -102,7 +109,7 @@ class BoardUnboardViewController: UIViewController {
         }
         
 
-        delegate.saveContext()
+        dc.save()
         
         self.navigationController?.popViewController(animated: true)
     }

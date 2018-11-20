@@ -21,7 +21,7 @@ class SingleJourneyHistoryViewController: UIViewController, UITableViewDataSourc
     func setJourney(journey: Journey) {
         self.journey = journey
         
-        self.title = String(format: "Reise am %@", DateFormatter.localizedString(from: (journey.parts!.array[0] as! JouneyPart).start!.time!, dateStyle: .short, timeStyle: .none))
+        self.title = String(format: "Reise am %@", DateFormatter.localizedString(from: (journey.parts!.array[0] as! JourneyPart).start!.time!, dateStyle: .short, timeStyle: .none))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,10 +36,27 @@ class SingleJourneyHistoryViewController: UIViewController, UITableViewDataSourc
         guard let cell = c as? JourneyHistoryPartTableViewCell else {
             fatalError("Could not create new cell")
         }
-        if let part = journey?.parts?.array[indexPath.row] as? JouneyPart {
+        if let part = journey?.parts?.array[indexPath.row] as? JourneyPart {
             cell.displayPart(part: part)
         }
         return cell
     }
+    
+    @IBAction func makeCurrentAgainButtonPressed(_ sender: Any) {
+        guard let j = journey, let u = j.forUser else {
+            return
+        }
+        
+        if u.currentJourney?.parts?.count == 0 && u.currentPart == nil {
+            DataController().delete(u.currentJourney!)
+            u.currentJourney = j
+            j.currentOfUser = u
+            j.forUser = nil
+            u.removeFromJourneys(j)
+            DataController().save()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
 
 }

@@ -17,8 +17,8 @@ class JourneyArchiveTableViewCell: UITableViewCell {
     
     
     func display(journey: Journey) {
-        guard let first = journey.parts?.firstObject as? JouneyPart,
-            let last = journey.parts?.lastObject as? JouneyPart else {
+        guard let first = journey.parts?.firstObject as? JourneyPart,
+            let last = journey.parts?.lastObject as? JourneyPart else {
             return
         }
         dateLabel.text = DateFormatter.localizedString(from: first.start!.time!, dateStyle: .medium, timeStyle: .short)

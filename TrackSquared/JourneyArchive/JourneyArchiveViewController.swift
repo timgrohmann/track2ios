@@ -13,14 +13,20 @@ class JourneyArchiveViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var archiveTableView: UITableView!
     
-    var journeys: [Journey] = []
+    var journeys: [Journey] {
+        get {
+            return user?.journeys?.allObjects as? [Journey] ?? []
+        }
+    }
     
     let dataController = DataController()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        journeys = dataController.getUser().journeys?.allObjects as! [Journey]
+        user = dataController.getUser()
+        //journeys = dataController.getUser().journeys?.allObjects as! [Journey]
         // Do any additional setup after loading the view.
     }
     
@@ -51,6 +57,22 @@ class JourneyArchiveViewController: UIViewController, UITableViewDelegate, UITab
         
         cell.display(journey: journeys[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let j = journeys[indexPath.row]
+            let alert = UIAlertController()
+            alert.addAction(UIAlertAction(title: "Löschen", style: .destructive, handler: {
+                _ in
+                self.user?.removeFromJourneys(j)
+                self.dataController.delete(j)
+                self.dataController.save()
+                self.archiveTableView.deleteRows(at: [indexPath], with: .fade)
+                }))
+            alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
 }

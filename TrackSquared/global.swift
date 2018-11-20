@@ -14,6 +14,6 @@ var delegate: AppDelegate{
     return UIApplication.shared.delegate as! AppDelegate
 }
 
-var managedObjectContext: NSManagedObjectContext{
+/*var managedObjectContext: NSManagedObjectContext{
     return delegate.persistentContainer.viewContext
-}
+}*/

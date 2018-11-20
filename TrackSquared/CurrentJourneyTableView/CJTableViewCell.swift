@@ -19,7 +19,7 @@ class CJTableViewCell: UITableViewCell {
     @IBInspectable var positiveDelayTextColor: UIColor?
     @IBInspectable var negativeOrNoDelayTextColor: UIColor?
     
-    func displayPart(part: JouneyPart) {
+    func displayPart(part: JourneyPart) {
         if let startEv = part.start, let goalEv = part.goal {
             start.text = startEv.station?.name
             goal.text = goalEv.station?.name
