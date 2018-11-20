@@ -114,7 +114,7 @@ class TrainSelectViewController: UIViewController {
     @IBAction func chooseButtonPressed(_ sender: Any) {
         if let nameDesc = makeParts(text: searchTextField.text ?? "") {
             let traintype = Train.typeMap[nameDesc.type.uppercased()] ?? .NE
-            let train = DataController().getTrain(number: nameDesc.number, trainType: traintype) ?? DataController().makeTrain()
+            let train = dataController.getTrain(number: nameDesc.number, trainType: traintype) ?? dataController.makeTrain()
             
             train.number = nameDesc.number
             train.type = traintype

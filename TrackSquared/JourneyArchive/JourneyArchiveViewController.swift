@@ -19,7 +19,6 @@ class JourneyArchiveViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    let dataController = DataController()
     var user: User?
     
     override func viewDidLoad() {
@@ -66,8 +65,8 @@ class JourneyArchiveViewController: UIViewController, UITableViewDelegate, UITab
             alert.addAction(UIAlertAction(title: "Löschen", style: .destructive, handler: {
                 _ in
                 self.user?.removeFromJourneys(j)
-                self.dataController.delete(j)
-                self.dataController.save()
+                dataController.delete(j)
+                dataController.save()
                 self.archiveTableView.deleteRows(at: [indexPath], with: .fade)
                 }))
             alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))

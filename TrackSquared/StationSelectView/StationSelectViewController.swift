@@ -15,14 +15,13 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var searchTextField: UITextField!
     
     
-    let controller = DataController()
     var stations: [Station] = []
     var selectedCallback: ((Station?) -> ())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        stations = controller.getStations()
+        stations = dataController.getStations()
         
         //Used to get keyboard size to adjust bottom table offset
         NotificationCenter.default.addObserver(
@@ -80,7 +79,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func searchValueChanged(_ sender: Any) {
         let s = searchTextField.text ?? ""
-        stations = controller.searchStations(search: s)
+        stations = dataController.searchStations(search: s)
         stationsTableView.reloadData()
     }
     

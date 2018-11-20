@@ -14,6 +14,10 @@ var delegate: AppDelegate{
     return UIApplication.shared.delegate as! AppDelegate
 }
 
+var dataController: DataController {
+    return (UIApplication.shared.delegate as! AppDelegate).dataController
+}
+
 /*var managedObjectContext: NSManagedObjectContext{
     return delegate.persistentContainer.viewContext
 }*/

@@ -62,6 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    lazy var dataController: DataController = {
+        return DataController(ctx: persistentContainer.viewContext)
+    }()
+    
     // MARK: - Core Data Saving support
 
     func saveContext () {

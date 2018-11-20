@@ -38,7 +38,7 @@ class CSVParser {
             let code = String(stationProps[1])
             let name = String(stationProps[3])
             if code != "" && name != ""{
-                let new = DataController().makeStation()
+                let new = dataController.makeStation()
                 new.code = code
                 new.name = name
                 stations.append(new)

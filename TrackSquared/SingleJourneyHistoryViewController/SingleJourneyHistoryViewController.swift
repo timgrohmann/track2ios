@@ -48,12 +48,12 @@ class SingleJourneyHistoryViewController: UIViewController, UITableViewDataSourc
         }
         
         if u.currentJourney?.parts?.count == 0 && u.currentPart == nil {
-            DataController().delete(u.currentJourney!)
+            dataController.delete(u.currentJourney!)
             u.currentJourney = j
             j.currentOfUser = u
             j.forUser = nil
             u.removeFromJourneys(j)
-            DataController().save()
+            dataController.save()
             self.navigationController?.popToRootViewController(animated: true)
         }
     }

@@ -12,8 +12,8 @@ import CoreData
 class DataController {
     let ctx: NSManagedObjectContext
     
-    init() {
-        ctx = delegate.persistentContainer.viewContext
+    init(ctx: NSManagedObjectContext) {
+        self.ctx = ctx
     }
     
     func prepare() {

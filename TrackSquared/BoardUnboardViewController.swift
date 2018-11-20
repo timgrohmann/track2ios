@@ -21,12 +21,10 @@ class BoardUnboardViewController: UIViewController {
     var currentlySelectedStation: Station?
     var currentlySelectedTrain: Train?
     
-    let dc = DataController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let part = dc.getUser().currentPart {
+        if let part = dataController.getUser().currentPart {
             self.title = "Aussteigen"
             currentlySelectedTrain = part.train
             selectTrainButton.isEnabled = false
@@ -71,11 +69,11 @@ class BoardUnboardViewController: UIViewController {
         }
         
         
-        let u = dc.getUser()
+        let u = dataController.getUser()
         
         if let p = u.currentPart {
             // Current part exists, so this is the end of the part
-            let endEv = dc.makeTrainEvent()
+            let endEv = dataController.makeTrainEvent()
             
             endEv.goalOfPart = p
             p.goal = endEv
@@ -91,9 +89,9 @@ class BoardUnboardViewController: UIViewController {
             u.currentPart = nil
         } else {
             // Current part does not yet exist, so this is a new one
-            let newPart = dc.makeJourneyPart()
+            let newPart = dataController.makeJourneyPart()
             
-            let startEv = dc.makeTrainEvent()
+            let startEv = dataController.makeTrainEvent()
             
             startEv.startOfPart = newPart
             newPart.start = startEv
@@ -109,7 +107,7 @@ class BoardUnboardViewController: UIViewController {
         }
         
 
-        dc.save()
+        dataController.save()
         
         self.navigationController?.popViewController(animated: true)
     }

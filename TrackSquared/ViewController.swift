@@ -20,17 +20,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var quitJourneyButton: ButtonDesignable!
     @IBOutlet weak var journeyTableView: UITableView!
     
-    let dc = DataController()
-    
     var timeTimer: Timer?
     var user: User?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dc.prepare()
+        dataController.prepare()
         
-        user = dc.getUser()
+        user = dataController.getUser()
         
         
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
@@ -92,9 +90,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cJourney.currentOfUser = nil
             cJourney.forUser = user
             
-            user?.currentJourney = dc.makeJourney()
+            user?.currentJourney = dataController.makeJourney()
             user?.currentJourney?.currentOfUser = user
-            dc.save()
+            dataController.save()
             journeyTableView.reloadData()
         }
     }
@@ -129,8 +127,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if  let len = user?.currentJourney?.parts?.count,
                 let p = user?.currentJourney?.parts?.array[len-1-indexPath.row] as? JourneyPart {
                 user?.currentJourney?.removeFromParts(p)
-                dc.delete(p)
-                delegate.saveContext()
+                dataController.delete(p)
+                dataController.save()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
