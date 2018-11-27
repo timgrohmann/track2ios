@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDFCA21A02594000105C2 /* TrainEvent.swift */; };
+		183E443521AD2B990032E0E2 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E443421AD2B990032E0E2 /* Station.swift */; };
+		183E443A21AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */; };
+		1856125121A6CB160041AD39 /* DBOpenData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1856125021A6CB160041AD39 /* DBOpenData.plist */; };
+		1856125321A6D1600041AD39 /* DBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125221A6D1600041AD39 /* DBAPI.swift */; };
+		1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */; };
 		186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */; };
 		186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */; };
 		18A44A4D21973FD80058C966 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4C21973FD80058C966 /* global.swift */; };
@@ -25,6 +30,7 @@
 		18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */; };
 		18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711D2196D1D700761D4D /* Assets.xcassets */; };
 		18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */; };
+		18EE7F0421AC304C004DF366 /* DBAPIDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */; };
 		18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */; };
 		18F90630219ADB4200505A9A /* DS100.csv in Resources */ = {isa = PBXBuildFile; fileRef = 18F9062F219ADB4200505A9A /* DS100.csv */; };
 		18F90632219ADB6300505A9A /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F90631219ADB6300505A9A /* CSVParser.swift */; };
@@ -34,8 +40,26 @@
 		18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9063E219C6D5500505A9A /* ButtonDesignable.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1856125D21A6D47E0041AD39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18E071082196D1D600761D4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18E0710F2196D1D600761D4D;
+			remoteInfo = TrackSquared;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		181EDFCA21A02594000105C2 /* TrainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEvent.swift; sourceTree = "<group>"; };
+		183E443421AD2B990032E0E2 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		183E443621AD32EE0032E0E2 /* TrackSquaredv2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackSquaredv2.xcdatamodel; sourceTree = "<group>"; };
+		183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "ModelMapperv1-v2.xcmappingmodel"; sourceTree = "<group>"; };
+		1856125021A6CB160041AD39 /* DBOpenData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DBOpenData.plist; sourceTree = "<group>"; };
+		1856125221A6D1600041AD39 /* DBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAPI.swift; sourceTree = "<group>"; };
+		1856125821A6D47E0041AD39 /* TrackSquaredTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackSquaredTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSquaredTests.swift; sourceTree = "<group>"; };
+		1856125C21A6D47E0041AD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleJourneyHistoryViewController.swift; sourceTree = "<group>"; };
 		186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHistoryPartTableViewCell.swift; sourceTree = "<group>"; };
 		18A44A4C21973FD80058C966 /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
@@ -55,6 +79,7 @@
 		18E0711D2196D1D700761D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E071202196D1D700761D4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E071222196D1D700761D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAPIDataTypes.swift; sourceTree = "<group>"; };
 		18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
 		18F9062F219ADB4200505A9A /* DS100.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DS100.csv; sourceTree = "<group>"; };
 		18F90631219ADB6300505A9A /* CSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
@@ -65,6 +90,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1856125521A6D47E0041AD39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18E0710D2196D1D600761D4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,6 +107,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1856124F21A6CA660041AD39 /* DBAPI */ = {
+			isa = PBXGroup;
+			children = (
+				1856125021A6CB160041AD39 /* DBOpenData.plist */,
+				1856125221A6D1600041AD39 /* DBAPI.swift */,
+				18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */,
+			);
+			path = DBAPI;
+			sourceTree = "<group>";
+		};
+		1856125921A6D47E0041AD39 /* TrackSquaredTests */ = {
+			isa = PBXGroup;
+			children = (
+				1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */,
+				1856125C21A6D47E0041AD39 /* Info.plist */,
+			);
+			path = TrackSquaredTests;
+			sourceTree = "<group>";
+		};
 		186C57DC21A2B95A00F3BC04 /* SingleJourneyHistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +168,7 @@
 			children = (
 				18F9062E219ADB2C00505A9A /* Resources */,
 				18E071122196D1D600761D4D /* TrackSquared */,
+				1856125921A6D47E0041AD39 /* TrackSquaredTests */,
 				18E071112196D1D600761D4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				18E071102196D1D600761D4D /* TrackSquared.app */,
+				1856125821A6D47E0041AD39 /* TrackSquaredTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,12 +185,13 @@
 		18E071122196D1D600761D4D /* TrackSquared */ = {
 			isa = PBXGroup;
 			children = (
+				1856124F21A6CA660041AD39 /* DBAPI */,
 				18E071222196D1D700761D4D /* Info.plist */,
+				18E071282196D1E800761D4D /* Data */,
 				18F90636219C315000505A9A /* TrainSelectView */,
 				18D37CA821996B4D00372162 /* StationSelectView */,
 				18A44A4E219748850058C966 /* CurrentJourneyTableView */,
 				18CF674421A1D3E400F10BFF /* JourneyArchive */,
-				18E071282196D1E800761D4D /* Data */,
 				186C57DC21A2B95A00F3BC04 /* SingleJourneyHistoryViewController */,
 				18E071132196D1D600761D4D /* AppDelegate.swift */,
 				18E071172196D1D600761D4D /* Main.storyboard */,
@@ -145,6 +199,7 @@
 				18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */,
 				18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */,
 				18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */,
+				183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */,
 				18A44A4C21973FD80058C966 /* global.swift */,
 				18F9063D219C6D3700505A9A /* UIElements */,
 				18E0711D2196D1D700761D4D /* Assets.xcassets */,
@@ -159,6 +214,7 @@
 				18F90631219ADB6300505A9A /* CSVParser.swift */,
 				18F90634219C266300505A9A /* Train.swift */,
 				181EDFCA21A02594000105C2 /* TrainEvent.swift */,
+				183E443421AD2B990032E0E2 /* Station.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -191,6 +247,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1856125721A6D47E0041AD39 /* TrackSquaredTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1856125F21A6D47E0041AD39 /* Build configuration list for PBXNativeTarget "TrackSquaredTests" */;
+			buildPhases = (
+				1856125421A6D47E0041AD39 /* Sources */,
+				1856125521A6D47E0041AD39 /* Frameworks */,
+				1856125621A6D47E0041AD39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1856125E21A6D47E0041AD39 /* PBXTargetDependency */,
+			);
+			name = TrackSquaredTests;
+			productName = TrackSquaredTests;
+			productReference = 1856125821A6D47E0041AD39 /* TrackSquaredTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		18E0710F2196D1D600761D4D /* TrackSquared */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18E071252196D1D700761D4D /* Build configuration list for PBXNativeTarget "TrackSquared" */;
@@ -219,6 +293,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Tim Grohmann";
 				TargetAttributes = {
+					1856125721A6D47E0041AD39 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 18E0710F2196D1D600761D4D;
+					};
 					18E0710F2196D1D600761D4D = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -238,11 +316,19 @@
 			projectRoot = "";
 			targets = (
 				18E0710F2196D1D600761D4D /* TrackSquared */,
+				1856125721A6D47E0041AD39 /* TrackSquaredTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1856125621A6D47E0041AD39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18E0710E2196D1D600761D4D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,6 +337,7 @@
 				18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */,
 				18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */,
 				18F90630219ADB4200505A9A /* DS100.csv in Resources */,
+				1856125121A6CB160041AD39 /* DBOpenData.plist in Resources */,
 				18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */,
 				18E071192196D1D600761D4D /* Main.storyboard in Resources */,
 				18F9063A219C4E1100505A9A /* TrainSelectViewController.xib in Resources */,
@@ -280,6 +367,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1856125421A6D47E0041AD39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18E0710C2196D1D600761D4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,15 +384,19 @@
 				18A44A4D21973FD80058C966 /* global.swift in Sources */,
 				18F90635219C266300505A9A /* Train.swift in Sources */,
 				18F90639219C4E1100505A9A /* TrainSelectViewController.swift in Sources */,
+				1856125321A6D1600041AD39 /* DBAPI.swift in Sources */,
 				18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */,
 				181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */,
 				18CF674821A1D44600F10BFF /* JourneyArchiveTableViewCell.swift in Sources */,
 				18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */,
+				18EE7F0421AC304C004DF366 /* DBAPIDataTypes.swift in Sources */,
 				18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */,
 				186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */,
+				183E443521AD2B990032E0E2 /* Station.swift in Sources */,
 				18F90632219ADB6300505A9A /* CSVParser.swift in Sources */,
 				18D37CB82199825F00372162 /* StationTableViewCell.swift in Sources */,
 				18D37CB621997E3400372162 /* DataController.swift in Sources */,
+				183E443A21AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel in Sources */,
 				18E071162196D1D600761D4D /* ViewController.swift in Sources */,
 				186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */,
 				18E071142196D1D600761D4D /* AppDelegate.swift in Sources */,
@@ -306,6 +405,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1856125E21A6D47E0041AD39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18E0710F2196D1D600761D4D /* TrackSquared */;
+			targetProxy = 1856125D21A6D47E0041AD39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18E071172196D1D600761D4D /* Main.storyboard */ = {
@@ -327,6 +434,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1856126021A6D47E0041AD39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
+				INFOPLIST_FILE = TrackSquaredTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquaredTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrackSquared.app/TrackSquared";
+			};
+			name = Debug;
+		};
+		1856126121A6D47E0041AD39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
+				INFOPLIST_FILE = TrackSquaredTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquaredTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrackSquared.app/TrackSquared";
+			};
+			name = Release;
+		};
 		18E071232196D1D700761D4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -486,6 +637,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1856125F21A6D47E0041AD39 /* Build configuration list for PBXNativeTarget "TrackSquaredTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1856126021A6D47E0041AD39 /* Debug */,
+				1856126121A6D47E0041AD39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		18E0710B2196D1D600761D4D /* Build configuration list for PBXProject "TrackSquared" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -510,6 +670,7 @@
 		18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				183E443621AD32EE0032E0E2 /* TrackSquaredv2.xcdatamodel */,
 				18E0711B2196D1D600761D4D /* TrackSquared.xcdatamodel */,
 			);
 			currentVersion = 18E0711B2196D1D600761D4D /* TrackSquared.xcdatamodel */;

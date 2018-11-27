@@ -13,9 +13,9 @@ class StationTableViewCell: UITableViewCell {
     @IBOutlet weak var stationLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
     
-    func display(station: Station) {
+    func display(station: DBAPI.APIStation) {
         stationLabel.text = station.name
-        codeLabel.text = station.code
+        codeLabel.text = ""
     }
     
     

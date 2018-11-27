@@ -11,6 +11,7 @@ import CoreData
 
 class DataController {
     let ctx: NSManagedObjectContext
+    let api = DBAPI()
     
     init(ctx: NSManagedObjectContext) {
         self.ctx = ctx

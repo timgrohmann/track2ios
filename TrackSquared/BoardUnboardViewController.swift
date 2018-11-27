@@ -38,7 +38,7 @@ class BoardUnboardViewController: UIViewController {
         let selectStation = StationSelectViewController() {
             station in
             if let s = station {
-                self.currentlySelectedStation = s
+                self.currentlySelectedStation = Station.fromAPI(station: s)
                 self.selectStationButton.setTitle(self.currentlySelectedStation?.name, for: .normal)
             }
         }

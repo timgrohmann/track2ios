@@ -118,7 +118,7 @@ class TrainSelectViewController: UIViewController {
             
             train.number = nameDesc.number
             train.type = traintype
-            delegate.saveContext()
+            dataController.save()
             finishedWithResult(train)
         }
     }

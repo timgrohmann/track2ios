@@ -15,13 +15,11 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var searchTextField: UITextField!
     
     
-    var stations: [Station] = []
-    var selectedCallback: ((Station?) -> ())
+    var stations: [DBAPI.APIStation] = []
+    var selectedCallback: ((DBAPI.APIStation?) -> ())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        stations = dataController.getStations()
         
         //Used to get keyboard size to adjust bottom table offset
         NotificationCenter.default.addObserver(
@@ -33,7 +31,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         searchTextField.becomeFirstResponder()
     }
     
-    init(selectedCallback: @escaping (Station?) -> ()) {
+    init(selectedCallback: @escaping (DBAPI.APIStation?) -> ()) {
         self.selectedCallback = selectedCallback
         super.init(nibName: "StationSelectView", bundle: nil)
     }
@@ -47,7 +45,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         finishedWithResult(nil)
     }
     
-    func finishedWithResult(_ stat: Station?) {
+    func finishedWithResult(_ stat: DBAPI.APIStation?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
         selectedCallback(stat)
@@ -79,8 +77,20 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func searchValueChanged(_ sender: Any) {
         let s = searchTextField.text ?? ""
-        stations = dataController.searchStations(search: s)
-        stationsTableView.reloadData()
+        if s.count >= 3{
+            dataController.api.getLocations(name: s) {
+                stat, error in
+                if error == nil {
+                    self.stations = stat
+                    DispatchQueue.main.async {
+                        self.stationsTableView.reloadData()
+                    }
+                }
+            }
+        } else {
+            stations = []
+            stationsTableView.reloadData()
+        }
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         timeTimer?.fire()
 
-        delegate.saveContext()
+        dataController.save()
         displayCurrentPart()
         // Do any additional setup after loading the view, typically from a nib.
     }
