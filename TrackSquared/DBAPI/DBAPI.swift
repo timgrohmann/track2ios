@@ -71,6 +71,7 @@ class DBAPI {
                 callback(Ts, nil)
             } catch {
                 print(String(data: data!, encoding: .utf8) as Any)
+                print(endpoint)
                 print(error)
                 callback([], .JSONError)
             }

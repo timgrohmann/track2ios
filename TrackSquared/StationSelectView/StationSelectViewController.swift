@@ -81,8 +81,8 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
             dataController.api.getLocations(name: s) {
                 stat, error in
                 if error == nil {
-                    self.stations = stat
                     DispatchQueue.main.async {
+                        self.stations = stat
                         self.stationsTableView.reloadData()
                     }
                 }
@@ -102,8 +102,8 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if stations.count > 0 {
-            finishedWithResult(stations[0])
+        if let manualName = searchTextField.text, manualName.count >= 3 {
+            finishedWithResult(DBAPI.APIStation(name: manualName, id: -1))
             return true
         }
         return false

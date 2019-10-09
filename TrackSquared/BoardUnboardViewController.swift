@@ -47,7 +47,7 @@ class BoardUnboardViewController: UIViewController {
     }
     
     @IBAction func trainSelectButtonPressed(_ sender: Any) {
-        let selectTrain = TrainSelectViewController() {
+        let selectTrain = TrainSelectViewController(station: currentlySelectedStation?.toAPIStation()) {
             train in
             if let train = train {
                 self.currentlySelectedTrain = train

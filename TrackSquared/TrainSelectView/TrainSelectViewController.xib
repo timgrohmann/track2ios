@@ -15,6 +15,7 @@
                 <outlet property="chooseButton" destination="J4T-ac-Mn6" id="nVW-dl-9h1"/>
                 <outlet property="descriptorLabel" destination="Mnc-nw-n8A" id="NJO-zK-iyz"/>
                 <outlet property="searchTextField" destination="Dbc-9C-SH8" id="3rE-eL-VVS"/>
+                <outlet property="trainTableView" destination="XWw-JD-fQu" id="Cwv-e4-rWi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -102,14 +103,26 @@
                         <constraint firstItem="J4T-ac-Mn6" firstAttribute="leading" secondItem="4ZX-UV-sQH" secondAttribute="leading" id="vKC-66-ahj"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWw-JD-fQu">
+                    <rect key="frame" x="0.0" y="205.5" width="375" height="383.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="1cU-I0-yaJ"/>
+                        <outlet property="delegate" destination="-1" id="gbN-6r-TwF"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Dbc-9C-SH8" secondAttribute="trailing" constant="20" id="4Oq-vT-2QG"/>
                 <constraint firstItem="ogc-nA-Luj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="A14-0D-KeY"/>
+                <constraint firstItem="XWw-JD-fQu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DsV-KO-C0s"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XWw-JD-fQu" secondAttribute="trailing" id="JIK-1O-Tep"/>
                 <constraint firstItem="Mnc-nw-n8A" firstAttribute="top" secondItem="Dbc-9C-SH8" secondAttribute="bottom" constant="80" id="KKN-MF-H9X"/>
                 <constraint firstItem="Mnc-nw-n8A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MFY-Re-4iH"/>
                 <constraint firstItem="4ZX-UV-sQH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MiA-Sd-zNh"/>
+                <constraint firstItem="XWw-JD-fQu" firstAttribute="top" secondItem="Mnc-nw-n8A" secondAttribute="bottom" constant="20" id="UKV-DE-bnv"/>
+                <constraint firstItem="4ZX-UV-sQH" firstAttribute="top" secondItem="XWw-JD-fQu" secondAttribute="bottom" constant="20" id="bxK-oC-Z6S"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4ZX-UV-sQH" secondAttribute="bottom" constant="20" id="fax-Eo-VGI"/>
                 <constraint firstItem="Dbc-9C-SH8" firstAttribute="leading" secondItem="ogc-nA-Luj" secondAttribute="trailing" constant="20" id="kBj-zP-cPd"/>
                 <constraint firstItem="ogc-nA-Luj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="tmC-Nc-WGE"/>

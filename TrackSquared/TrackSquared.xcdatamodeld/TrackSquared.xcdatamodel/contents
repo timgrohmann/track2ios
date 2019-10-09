@@ -13,9 +13,10 @@
         <relationship name="train" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="inParts" inverseEntity="Train" syncable="YES"/>
     </entity>
     <entity name="Station" representedClassName="Station" syncable="YES" codeGenerationType="class">
+        <attribute name="api_id" optional="YES" attributeType="Integer 64" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="code" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="inEvents" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="TrainEvent" inverseName="station" inverseEntity="TrainEvent" syncable="YES"/>
+        <relationship name="inEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TrainEvent" inverseName="station" inverseEntity="TrainEvent" syncable="YES"/>
     </entity>
     <entity name="Train" representedClassName="Train" syncable="YES" codeGenerationType="class">
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,9 +26,9 @@
     <entity name="TrainEvent" representedClassName="TrainEvent" syncable="YES" codeGenerationType="class">
         <attribute name="scheduledTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="goalOfPart" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="JourneyPart" inverseName="goal" inverseEntity="JourneyPart" syncable="YES"/>
-        <relationship name="startOfPart" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="JourneyPart" inverseName="start" inverseEntity="JourneyPart" syncable="YES"/>
-        <relationship name="station" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="inEvents" inverseEntity="Station" syncable="YES"/>
+        <relationship name="goalOfPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JourneyPart" inverseName="goal" inverseEntity="JourneyPart" syncable="YES"/>
+        <relationship name="startOfPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JourneyPart" inverseName="start" inverseEntity="JourneyPart" syncable="YES"/>
+        <relationship name="station" maxCount="1" deletionRule="Cascade" destinationEntity="Station" inverseName="inEvents" inverseEntity="Station" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,7 +40,7 @@
     <elements>
         <element name="Journey" positionX="-125.6640625" positionY="51.62109375" width="128" height="90"/>
         <element name="JourneyPart" positionX="56.10546875" positionY="36.2421875" width="128" height="120"/>
-        <element name="Station" positionX="464.359375" positionY="41.8828125" width="128" height="88"/>
+        <element name="Station" positionX="464.359375" positionY="41.8828125" width="128" height="105"/>
         <element name="Train" positionX="257.44140625" positionY="136.10546875" width="128" height="90"/>
         <element name="TrainEvent" positionX="256.125" positionY="9.984375" width="128" height="120"/>
         <element name="User" positionX="-72.41796875" positionY="250.5546875" width="128" height="120"/>

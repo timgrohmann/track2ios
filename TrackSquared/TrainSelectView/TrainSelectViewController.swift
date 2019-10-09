@@ -8,13 +8,19 @@
 
 import UIKit
 
-class TrainSelectViewController: UIViewController {
+class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     @IBOutlet weak var descriptorLabel: UILabel!
     @IBOutlet weak var buttonBottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
-        
+    @IBOutlet weak var trainTableView: UITableView!
+    
     let selectedCallback: (Train?) -> ()
+    let station: DBAPI.APIStation?
+
+    var trains: [DBAPI.APITrain] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +33,20 @@ class TrainSelectViewController: UIViewController {
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
+        
+        loadDeparturesForStation()
         // Do any additional setup after loading the view.
     }
 
-    init(selectedCallback: @escaping (Train?) -> ()) {
+    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?) -> ()) {
         self.selectedCallback = selectedCallback
+        self.station = station
         super.init(nibName: "TrainSelectViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.selectedCallback = {_ in}
+        self.station = nil
         super.init(coder: aDecoder)
     }
     
@@ -118,9 +128,60 @@ class TrainSelectViewController: UIViewController {
             
             train.number = nameDesc.number
             train.type = traintype
-            dataController.save()
             finishedWithResult(train)
         }
     }
     
+    func loadDeparturesForStation() {
+        guard let station = station else {
+            return
+        }
+        
+        var departingTrains: [DBAPI.APITrain] = []
+        
+        let departuresDispatch = DispatchGroup()
+        
+        dataController.api.getDepartures(station: station, time: Date()) {
+            departures, error in
+            departuresDispatch.enter()
+            let trainDispatch = DispatchGroup()
+            for dep in departures {
+                trainDispatch.enter()
+                DispatchQueue.main.async {
+                    dataController.api.getTrainStopDetails(departure: dep) {
+                        details, error in
+                        departingTrains.append(DBAPI.APITrain(stops: details))
+                        trainDispatch.leave()
+                    }
+                }
+            }
+            trainDispatch.notify(queue: .main) {
+                departuresDispatch.leave()
+            }
+        }
+        
+        departuresDispatch.notify(queue: .main) {
+            DispatchQueue.main.async {
+                self.trainTableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Table View
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trains.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var c = trainTableView.dequeueReusableCell(withIdentifier: "train")
+        if c == nil {
+            c = UINib(nibName: "TrainSelectTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TrainSelectTableViewCell
+        }
+        guard let cell = c as? TrainSelectTableViewCell else {
+            fatalError("Could not create new cell")
+        }
+        cell.displayTrain(train: trains[indexPath.row])
+        return cell
+    }
 }

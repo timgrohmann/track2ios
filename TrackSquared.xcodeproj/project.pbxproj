@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181E690B21AD5BF400C0141B /* TrackSquared.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 181E690921AD5BF400C0141B /* TrackSquared.xcdatamodeld */; };
 		181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDFCA21A02594000105C2 /* TrainEvent.swift */; };
 		183E443521AD2B990032E0E2 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E443421AD2B990032E0E2 /* Station.swift */; };
 		183E443A21AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */; };
@@ -15,6 +16,8 @@
 		1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */; };
 		186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */; };
 		186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */; };
+		1875319F21AED5A500E94244 /* TrainSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */; };
+		187531A021AED5A500E94244 /* TrainSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */; };
 		18A44A4D21973FD80058C966 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4C21973FD80058C966 /* global.swift */; };
 		18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4F219748A80058C966 /* CJTableViewCell.swift */; };
 		18CF674621A1D41700F10BFF /* JourneyArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */; };
@@ -27,7 +30,6 @@
 		18E071142196D1D600761D4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E071132196D1D600761D4D /* AppDelegate.swift */; };
 		18E071162196D1D600761D4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E071152196D1D600761D4D /* ViewController.swift */; };
 		18E071192196D1D600761D4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E071172196D1D600761D4D /* Main.storyboard */; };
-		18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */; };
 		18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711D2196D1D700761D4D /* Assets.xcassets */; };
 		18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */; };
 		18EE7F0421AC304C004DF366 /* DBAPIDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */; };
@@ -51,9 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181E690A21AD5BF400C0141B /* TrackSquared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackSquared.xcdatamodel; sourceTree = "<group>"; };
 		181EDFCA21A02594000105C2 /* TrainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEvent.swift; sourceTree = "<group>"; };
 		183E443421AD2B990032E0E2 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		183E443621AD32EE0032E0E2 /* TrackSquaredv2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackSquaredv2.xcdatamodel; sourceTree = "<group>"; };
 		183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "ModelMapperv1-v2.xcmappingmodel"; sourceTree = "<group>"; };
 		1856125021A6CB160041AD39 /* DBOpenData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DBOpenData.plist; sourceTree = "<group>"; };
 		1856125221A6D1600041AD39 /* DBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAPI.swift; sourceTree = "<group>"; };
@@ -62,6 +64,8 @@
 		1856125C21A6D47E0041AD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleJourneyHistoryViewController.swift; sourceTree = "<group>"; };
 		186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHistoryPartTableViewCell.swift; sourceTree = "<group>"; };
+		1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSelectTableViewCell.swift; sourceTree = "<group>"; };
+		1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainSelectTableViewCell.xib; sourceTree = "<group>"; };
 		18A44A4C21973FD80058C966 /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		18A44A4F219748A80058C966 /* CJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJTableViewCell.swift; sourceTree = "<group>"; };
 		18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +79,6 @@
 		18E071132196D1D600761D4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18E071152196D1D600761D4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18E071182196D1D600761D4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		18E0711B2196D1D600761D4D /* TrackSquared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackSquared.xcdatamodel; sourceTree = "<group>"; };
 		18E0711D2196D1D700761D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E071202196D1D700761D4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E071222196D1D700761D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,7 +201,7 @@
 				18E071152196D1D600761D4D /* ViewController.swift */,
 				18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */,
 				18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */,
-				18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */,
+				181E690921AD5BF400C0141B /* TrackSquared.xcdatamodeld */,
 				183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */,
 				18A44A4C21973FD80058C966 /* global.swift */,
 				18F9063D219C6D3700505A9A /* UIElements */,
@@ -232,6 +235,8 @@
 			children = (
 				18F90637219C4E1100505A9A /* TrainSelectViewController.swift */,
 				18F90638219C4E1100505A9A /* TrainSelectViewController.xib */,
+				1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */,
+				1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */,
 			);
 			path = TrainSelectView;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 			files = (
 				18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */,
 				18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */,
+				187531A021AED5A500E94244 /* TrainSelectTableViewCell.xib in Resources */,
 				18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */,
 				18F90630219ADB4200505A9A /* DS100.csv in Resources */,
 				1856125121A6CB160041AD39 /* DBOpenData.plist in Resources */,
@@ -380,12 +386,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */,
+				181E690B21AD5BF400C0141B /* TrackSquared.xcdatamodeld in Sources */,
 				18CF674621A1D41700F10BFF /* JourneyArchiveViewController.swift in Sources */,
 				18A44A4D21973FD80058C966 /* global.swift in Sources */,
 				18F90635219C266300505A9A /* Train.swift in Sources */,
 				18F90639219C4E1100505A9A /* TrainSelectViewController.swift in Sources */,
+				1875319F21AED5A500E94244 /* TrainSelectTableViewCell.swift in Sources */,
 				1856125321A6D1600041AD39 /* DBAPI.swift in Sources */,
-				18E0711C2196D1D600761D4D /* TrackSquared.xcdatamodeld in Sources */,
 				181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */,
 				18CF674821A1D44600F10BFF /* JourneyArchiveTableViewCell.swift in Sources */,
 				18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */,
@@ -667,13 +674,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		18E0711A2196D1D600761D4D /* TrackSquared.xcdatamodeld */ = {
+		181E690921AD5BF400C0141B /* TrackSquared.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				183E443621AD32EE0032E0E2 /* TrackSquaredv2.xcdatamodel */,
-				18E0711B2196D1D600761D4D /* TrackSquared.xcdatamodel */,
+				181E690A21AD5BF400C0141B /* TrackSquared.xcdatamodel */,
 			);
-			currentVersion = 18E0711B2196D1D600761D4D /* TrackSquared.xcdatamodel */;
+			currentVersion = 181E690A21AD5BF400C0141B /* TrackSquared.xcdatamodel */;
 			path = TrackSquared.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

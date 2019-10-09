@@ -31,4 +31,18 @@ extension DBAPI {
         var type: String
         var `operator`: String
     }
+    
+    class APITrain {
+        var stops: [APITrainStopDetail]
+        lazy var name: String? = {
+            if stops.count > 0 {
+                return stops[0].train
+            }
+            return nil
+        }()
+        
+        init(stops: [APITrainStopDetail]) {
+            self.stops = stops
+        }
+    }
 }
