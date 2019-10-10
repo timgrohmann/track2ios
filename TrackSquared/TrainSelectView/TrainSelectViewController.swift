@@ -17,10 +17,13 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var trainTableView: UITableView!
     
-    let selectedCallback: (Train?) -> ()
+    let selectedCallback: (Train?, Date?) -> ()
     let station: DBAPI.APIStation?
 
     var trains: [DBAPI.APITrain] = []
+    var selectedTrain: DBAPI.APITrain?
+    
+    var tableFadeOutLayer: CAGradientLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,25 +38,33 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         )
         
         loadDeparturesForStation()
-        // Do any additional setup after loading the view.
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        addMaskLayerToTableView()
     }
 
-    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?) -> ()) {
+    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?, Date?) -> ()) {
         self.selectedCallback = selectedCallback
         self.station = station
         super.init(nibName: "TrainSelectViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.selectedCallback = {_ in}
+        self.selectedCallback = {_,_  in}
         self.station = nil
         super.init(coder: aDecoder)
     }
     
     @IBAction func inputTextFieldChanged(_ sender: UITextField) {
-        let text = sender.text ?? ""
+        guard let text = sender.text else {return}
         
-        let parts = makeParts(text: text)
+        processNewTrain(trainName: text)
+    }
+    
+    func processNewTrain(trainName: String) {
+        let parts = makeParts(text: trainName)
         
         if let trainName = parts {
             descriptorLabel.text = String(format: "%@ %@", trainName.type, trainName.number)
@@ -111,14 +122,14 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         chooseButton.isEnabled = false
     }
     
-    func finishedWithResult(_ stat: Train?) {
+    func finishedWithResult(_ stat: Train?, date: Date?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
-        selectedCallback(stat)
+        selectedCallback(stat, date)
     }
     
     @IBAction func abortButtonPressed(_ sender: Any) {
-        finishedWithResult(nil)
+        finishedWithResult(nil, date: nil)
     }
     
     @IBAction func chooseButtonPressed(_ sender: Any) {
@@ -128,7 +139,26 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             
             train.number = nameDesc.number
             train.type = traintype
-            finishedWithResult(train)
+            
+            // Retrieves time from currently selected real train if there is one
+            let dateParser = DateFormatter()
+            dateParser.dateFormat = "HH:mm"
+            
+            let stop = selectedTrain?.stops.first {$0.stopId == station?.id}
+            guard let departureTime = dateParser.date(from: stop?.depTime ?? "") else {
+                finishedWithResult(train, date: nil)
+                return
+            }
+            
+            let timeComponents = Calendar.current.dateComponents(in: .current, from: departureTime)
+            
+            // Sets time to current date
+            var components = Calendar.current.dateComponents(in: .current, from: Date())
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+            components.second = 0
+            
+            finishedWithResult(train, date: Calendar.current.date(from: components))
         }
     }
     
@@ -138,12 +168,9 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         var departingTrains: [DBAPI.APITrain] = []
-        
-        let departuresDispatch = DispatchGroup()
-        
+                
         dataController.api.getDepartures(station: station, time: Date()) {
             departures, error in
-            departuresDispatch.enter()
             let trainDispatch = DispatchGroup()
             for dep in departures {
                 trainDispatch.enter()
@@ -156,13 +183,10 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
             trainDispatch.notify(queue: .main) {
-                departuresDispatch.leave()
-            }
-        }
-        
-        departuresDispatch.notify(queue: .main) {
-            DispatchQueue.main.async {
-                self.trainTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.trains = departingTrains
+                    self.trainTableView.reloadData()
+                }
             }
         }
     }
@@ -181,7 +205,36 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         guard let cell = c as? TrainSelectTableViewCell else {
             fatalError("Could not create new cell")
         }
-        cell.displayTrain(train: trains[indexPath.row])
+        cell.displayTrain(train: trains[indexPath.row], at: station)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedTrain = trains[indexPath.row]
+        guard let selectedTrainName = selectedTrain?.name else {return}
+        searchTextField.text = selectedTrainName
+        processNewTrain(trainName: selectedTrainName)
+    }
+    
+    func addMaskLayerToTableView() {
+        if tableFadeOutLayer != nil {
+            return
+        }
+        
+        tableFadeOutLayer = CAGradientLayer()
+        
+        let transparent = UIColor(white: 1.0, alpha: 0.0).cgColor
+        let white = UIColor(white: 1.0, alpha: 1.0).cgColor
+        
+        let space = 0.02
+        
+        tableFadeOutLayer?.colors = [white,transparent,transparent,white]
+        tableFadeOutLayer?.locations = [0.0, NSNumber(value: space), NSNumber(value: 1.0 - space), 1.0]
+        tableFadeOutLayer?.position = trainTableView.frame.origin
+        tableFadeOutLayer?.bounds = CGRect(x: 0.0, y: 0.0, width: trainTableView.frame.width, height: trainTableView.frame.height)
+        tableFadeOutLayer?.anchorPoint = .zero
+        tableFadeOutLayer?.name = "Table transparency"
+        
+        view.layer.addSublayer(tableFadeOutLayer!)
     }
 }

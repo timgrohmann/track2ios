@@ -48,10 +48,14 @@ class BoardUnboardViewController: UIViewController {
     
     @IBAction func trainSelectButtonPressed(_ sender: Any) {
         let selectTrain = TrainSelectViewController(station: currentlySelectedStation?.toAPIStation()) {
-            train in
+            train, date in
             if let train = train {
                 self.currentlySelectedTrain = train
                 self.selectTrainButton.setTitle(String(format: "%@ %@", Train.typeNameMap[train.type] ?? "", train.number ?? ""), for: .normal)
+            }
+            
+            if let date = date {
+                self.timePicker.date = date
             }
         }
         self.modalPresentationStyle = .formSheet
