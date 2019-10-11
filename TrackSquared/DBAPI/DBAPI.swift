@@ -15,14 +15,9 @@ class DBAPI {
     
     init() {
         let bundle = Bundle.main
-        if let path = bundle.path(forResource: "DBOpenData", ofType: "plist"),
-            let infoDict = NSDictionary(contentsOfFile: path),
-            let tkn = infoDict["Token"] as? String,
-            let vn = infoDict["Version"] as? String,
-            let rurl = infoDict["Root_URL"] as? String {
-            
+        if let tkn = DBAPISecrets.accessKey, let rurl = DBAPISecrets.rootPath {
             self.token = tkn
-            self.version = vn
+            self.version = "v1"
             self.rootURL = rurl
         } else {
             fatalError("DBOpenData not configured")
