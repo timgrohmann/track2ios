@@ -35,14 +35,21 @@ class CSVParser {
         
         for s in split {
             let stationProps = s.split(separator: ";", omittingEmptySubsequences: false)
+            let apiId = String(stationProps[0])
             let code = String(stationProps[1])
             let name = String(stationProps[3])
             if code != "" && name != ""{
                 let new = dataController.makeStation()
                 new.code = code
                 new.name = name
+                new.api_id = Int64(apiId)!
+                
                 stations.append(new)
             }
         }
+        
+        dataController.save()
+        
+        print("Loaded \(stations.count) stations from DS100")
     }
 }

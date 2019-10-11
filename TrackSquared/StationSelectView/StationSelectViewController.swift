@@ -15,8 +15,8 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var searchTextField: UITextField!
     
     
-    var stations: [DBAPI.APIStation] = []
-    var selectedCallback: ((DBAPI.APIStation?) -> ())
+    var stations: [Station] = []
+    var selectedCallback: ((Station?) -> ())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         searchTextField.becomeFirstResponder()
     }
     
-    init(selectedCallback: @escaping (DBAPI.APIStation?) -> ()) {
+    init(selectedCallback: @escaping (Station?) -> ()) {
         self.selectedCallback = selectedCallback
         super.init(nibName: "StationSelectView", bundle: nil)
     }
@@ -45,7 +45,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         finishedWithResult(nil)
     }
     
-    func finishedWithResult(_ stat: DBAPI.APIStation?) {
+    func finishedWithResult(_ stat: Station?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
         selectedCallback(stat)
@@ -72,13 +72,28 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         finishedWithResult(stations[indexPath.last!])
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return stations[indexPath.row].code == ""
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let toBeDeleted = stations[indexPath.row]
+            stations.remove(at: indexPath.row)
+            dataController.delete(toBeDeleted)
+            dataController.save()
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            
+        }
+    }
 
     // MARK: - Text field
     
     @IBAction func searchValueChanged(_ sender: Any) {
         let s = searchTextField.text ?? ""
-        if s.count >= 3{
-            dataController.api.getLocations(name: s) {
+        if s.count >= 1{
+            /*dataController.api.getLocations(name: s) {
                 stat, error in
                 if error == nil {
                     DispatchQueue.main.async {
@@ -86,7 +101,9 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
                         self.stationsTableView.reloadData()
                     }
                 }
-            }
+            }*/
+            stations = dataController.searchStations(search: s)
+            self.stationsTableView.reloadData()
         } else {
             stations = []
             stationsTableView.reloadData()
@@ -103,7 +120,11 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let manualName = searchTextField.text, manualName.count >= 3 {
-            finishedWithResult(DBAPI.APIStation(name: manualName, id: -1))
+            let newStation = dataController.makeStation()
+            newStation.name = manualName
+            newStation.code = ""
+            dataController.save()
+            finishedWithResult(newStation)
             return true
         }
         return false

@@ -169,7 +169,8 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         
         var departingTrains: [DBAPI.APITrain] = []
                 
-        dataController.api.getDepartures(station: station, time: Date()) {
+        // Get departures from at most 20 minutes ago
+        dataController.api.getDepartures(station: station, time: Date().addingTimeInterval(-60*20)) {
             departures, error in
             let trainDispatch = DispatchGroup()
             for dep in departures {

@@ -25,7 +25,7 @@ extension Station {
     
     public override func willSave() {
         if self.inEvents?.count == 0 {
-            dataController.delete(self)
+            //dataController.delete(self)
         }
     }
 }

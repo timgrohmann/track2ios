@@ -42,7 +42,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let startDate = self.user?.currentPart?.start?.time {
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute]
-                formatter.unitsStyle = .positional
+                formatter.unitsStyle = .abbreviated
+                
                 
                 self.timeLabel.text = formatter.string(from: Date().timeIntervalSince(startDate))
             } else {

@@ -18,7 +18,12 @@ class BoardUnboardViewController: UIViewController {
     @IBOutlet weak var delayStepper: UIStepper!
     
     
-    var currentlySelectedStation: Station?
+    var currentlySelectedStation: Station? {
+        didSet {
+            let newTitle = currentlySelectedStation?.name ?? "Bahnhof auswählen…"
+            self.selectStationButton.setTitle(newTitle, for: .normal)
+        }
+    }
     var currentlySelectedTrain: Train?
     
     override func viewDidLoad() {
@@ -38,8 +43,10 @@ class BoardUnboardViewController: UIViewController {
         let selectStation = StationSelectViewController() {
             station in
             if let s = station {
-                self.currentlySelectedStation = Station.fromAPI(station: s)
-                self.selectStationButton.setTitle(self.currentlySelectedStation?.name, for: .normal)
+                self.currentlySelectedStation = s
+            }
+            if self.currentlySelectedStation?.name == nil {
+                self.currentlySelectedStation = nil
             }
         }
         self.modalPresentationStyle = .formSheet
