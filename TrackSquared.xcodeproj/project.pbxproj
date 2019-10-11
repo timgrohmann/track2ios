@@ -11,7 +11,6 @@
 		181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDFCA21A02594000105C2 /* TrainEvent.swift */; };
 		183E443521AD2B990032E0E2 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E443421AD2B990032E0E2 /* Station.swift */; };
 		183E443A21AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */; };
-		1856125121A6CB160041AD39 /* DBOpenData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1856125021A6CB160041AD39 /* DBOpenData.plist */; };
 		1856125321A6D1600041AD39 /* DBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125221A6D1600041AD39 /* DBAPI.swift */; };
 		1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */; };
 		186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */; };
@@ -59,7 +58,6 @@
 		181EDFCA21A02594000105C2 /* TrainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEvent.swift; sourceTree = "<group>"; };
 		183E443421AD2B990032E0E2 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		183E443921AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "ModelMapperv1-v2.xcmappingmodel"; sourceTree = "<group>"; };
-		1856125021A6CB160041AD39 /* DBOpenData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DBOpenData.plist; sourceTree = "<group>"; };
 		1856125221A6D1600041AD39 /* DBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAPI.swift; sourceTree = "<group>"; };
 		1856125821A6D47E0041AD39 /* TrackSquaredTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackSquaredTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSquaredTests.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 		1856124F21A6CA660041AD39 /* DBAPI */ = {
 			isa = PBXGroup;
 			children = (
-				1856125021A6CB160041AD39 /* DBOpenData.plist */,
 				1856125221A6D1600041AD39 /* DBAPI.swift */,
 				18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */,
 			);
@@ -366,7 +363,6 @@
 				187531A021AED5A500E94244 /* TrainSelectTableViewCell.xib in Resources */,
 				18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */,
 				18F90630219ADB4200505A9A /* DS100.csv in Resources */,
-				1856125121A6CB160041AD39 /* DBOpenData.plist in Resources */,
 				18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */,
 				18E071192196D1D600761D4D /* Main.storyboard in Resources */,
 				18F9063A219C4E1100505A9A /* TrainSelectViewController.xib in Resources */,
