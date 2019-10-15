@@ -11,6 +11,7 @@ import Foundation
 class DBAPISecrets {
     static var accessKey: String? = DBAPISecrets.variable(named: "DB_ACCESS_KEY")
     static var rootPath: String? = DBAPISecrets.variable(named: "DB_ROOT_PATH")
+    static var timetablesPath: String? = DBAPISecrets.variable(named: "DB_TT_PATH")
     
     static func variable(named name: String) -> String? {
         return variableFromEnv(named: name) ?? variableFromPlist(named: name)

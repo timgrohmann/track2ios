@@ -17,12 +17,16 @@
 		1856125321A6D1600041AD39 /* DBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125221A6D1600041AD39 /* DBAPI.swift */; };
 		1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */; };
 		185E63582355C2D60086B88D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 185E63572355C2D60086B88D /* Podfile */; };
+		185E7B762355C6610047E44D /* TimetablesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E7B752355C6610047E44D /* TimetablesAPI.swift */; };
+		185E7B782355C8340047E44D /* TimetablesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E7B772355C8340047E44D /* TimetablesAPITests.swift */; };
+		185E7B7A2355EE050047E44D /* TimetablesAPITypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185E7B792355EE050047E44D /* TimetablesAPITypes.swift */; };
 		186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */; };
 		186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */; };
 		1875319F21AED5A500E94244 /* TrainSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */; };
 		187531A021AED5A500E94244 /* TrainSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */; };
 		18A44A4D21973FD80058C966 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4C21973FD80058C966 /* global.swift */; };
 		18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4F219748A80058C966 /* CJTableViewCell.swift */; };
+		18B8E89723562DB4006277CE /* TimetablesAPIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */; };
 		18CF674621A1D41700F10BFF /* JourneyArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */; };
 		18CF674821A1D44600F10BFF /* JourneyArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */; };
 		18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */; };
@@ -69,12 +73,16 @@
 		1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSquaredTests.swift; sourceTree = "<group>"; };
 		1856125C21A6D47E0041AD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185E63572355C2D60086B88D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		185E7B752355C6610047E44D /* TimetablesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesAPI.swift; sourceTree = "<group>"; };
+		185E7B772355C8340047E44D /* TimetablesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesAPITests.swift; sourceTree = "<group>"; };
+		185E7B792355EE050047E44D /* TimetablesAPITypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesAPITypes.swift; sourceTree = "<group>"; };
 		186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleJourneyHistoryViewController.swift; sourceTree = "<group>"; };
 		186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHistoryPartTableViewCell.swift; sourceTree = "<group>"; };
 		1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSelectTableViewCell.swift; sourceTree = "<group>"; };
 		1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainSelectTableViewCell.xib; sourceTree = "<group>"; };
 		18A44A4C21973FD80058C966 /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		18A44A4F219748A80058C966 /* CJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJTableViewCell.swift; sourceTree = "<group>"; };
+		18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesAPIErrors.swift; sourceTree = "<group>"; };
 		18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveViewController.swift; sourceTree = "<group>"; };
 		18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardUnboardViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +142,9 @@
 				18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */,
 				1855EEB32350CAC800ABCBC2 /* DBAPISecrets.swift */,
 				1855EEB52350CF5800ABCBC2 /* DBOpenData.secret.plist */,
+				185E7B752355C6610047E44D /* TimetablesAPI.swift */,
+				185E7B792355EE050047E44D /* TimetablesAPITypes.swift */,
+				18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */,
 			);
 			path = DBAPI;
 			sourceTree = "<group>";
@@ -143,6 +154,7 @@
 			children = (
 				1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */,
 				1856125C21A6D47E0041AD39 /* Info.plist */,
+				185E7B772355C8340047E44D /* TimetablesAPITests.swift */,
 			);
 			path = TrackSquaredTests;
 			sourceTree = "<group>";
@@ -486,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185E7B782355C8340047E44D /* TimetablesAPITests.swift in Sources */,
 				1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +521,7 @@
 				18EE7F0421AC304C004DF366 /* DBAPIDataTypes.swift in Sources */,
 				18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */,
 				186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */,
+				185E7B762355C6610047E44D /* TimetablesAPI.swift in Sources */,
 				183E443521AD2B990032E0E2 /* Station.swift in Sources */,
 				18F90632219ADB6300505A9A /* CSVParser.swift in Sources */,
 				1855EEB42350CAC800ABCBC2 /* DBAPISecrets.swift in Sources */,
@@ -515,6 +529,8 @@
 				18D37CB621997E3400372162 /* DataController.swift in Sources */,
 				183E443A21AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel in Sources */,
 				18E071162196D1D600761D4D /* ViewController.swift in Sources */,
+				185E7B7A2355EE050047E44D /* TimetablesAPITypes.swift in Sources */,
+				18B8E89723562DB4006277CE /* TimetablesAPIErrors.swift in Sources */,
 				186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */,
 				18E071142196D1D600761D4D /* AppDelegate.swift in Sources */,
 				18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */,
