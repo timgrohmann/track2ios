@@ -20,10 +20,12 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
     let selectedCallback: (Train?, Date?) -> ()
     let station: DBAPI.APIStation?
 
-    var trains: [DBAPI.APITrain] = []
-    var selectedTrain: DBAPI.APITrain?
+    var departures: [TimetablesAPI.Stop] = []
+    var selectedStop: TimetablesAPI.Stop?
     
     var tableFadeOutLayer: CAGradientLayer?
+    
+    var hourOffset: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,26 +142,18 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             train.number = nameDesc.number
             train.type = traintype
             
-            // Retrieves time from currently selected real train if there is one
-            let dateParser = DateFormatter()
-            dateParser.dateFormat = "HH:mm"
-            
-            let stop = selectedTrain?.stops.first {$0.stopId == station?.id}
-            guard let departureTime = dateParser.date(from: stop?.depTime ?? "") else {
-                finishedWithResult(train, date: nil)
-                return
-            }
-            
-            let timeComponents = Calendar.current.dateComponents(in: .current, from: departureTime)
-            
-            // Sets time to current date
-            var components = Calendar.current.dateComponents(in: .current, from: Date())
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-            components.second = 0
-            
-            finishedWithResult(train, date: Calendar.current.date(from: components))
+            finishedWithResult(train, date: selectedStop?.departure!.timestamp)
         }
+    }
+    
+    @IBAction func laterButtonPresse(_ sender: Any) {
+        hourOffset += 1
+        loadDeparturesForStation()
+    }
+    
+    @IBAction func earlierButtonPressed(_ sender: Any) {
+        hourOffset -= 1
+        loadDeparturesForStation()
     }
     
     func loadDeparturesForStation() {
@@ -167,27 +161,17 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         
-        var departingTrains: [DBAPI.APITrain] = []
-                
-        // Get departures from at most 20 minutes ago
-        dataController.api.getDepartures(station: station, time: Date().addingTimeInterval(-60*20)) {
-            departures, error in
-            let trainDispatch = DispatchGroup()
-            for dep in departures {
-                trainDispatch.enter()
-                DispatchQueue.main.async {
-                    dataController.api.getTrainStopDetails(departure: dep) {
-                        details, error in
-                        departingTrains.append(DBAPI.APITrain(stops: details))
-                        trainDispatch.leave()
-                    }
-                }
+        dataController.timetablesAPI.getPlan(evaNo: String(station.id), date: Date().addingTimeInterval(60.0 * 60.0 * Double(hourOffset))) {
+            result in
+            switch result {
+            case .success(let stops):
+                self.departures = stops.filter { $0.departure != nil }
+            case .failure(_):
+                self.departures = []
             }
-            trainDispatch.notify(queue: .main) {
-                DispatchQueue.main.async {
-                    self.trains = departingTrains
-                    self.trainTableView.reloadData()
-                }
+            
+            DispatchQueue.main.async {
+                self.trainTableView.reloadData()
             }
         }
     }
@@ -195,7 +179,7 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trains.count
+        return departures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -206,15 +190,16 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         guard let cell = c as? TrainSelectTableViewCell else {
             fatalError("Could not create new cell")
         }
-        cell.displayTrain(train: trains[indexPath.row], at: station)
+        cell.displayDeparture(departures[indexPath.row], at: station)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedTrain = trains[indexPath.row]
-        guard let selectedTrainName = selectedTrain?.name else {return}
-        searchTextField.text = selectedTrainName
-        processNewTrain(trainName: selectedTrainName)
+        selectedStop = departures[indexPath.row]
+        if let trainName = selectedStop?.train.getDisplayName() {
+            searchTextField.text = trainName
+            processNewTrain(trainName: trainName)
+        }
     }
     
     func addMaskLayerToTableView() {

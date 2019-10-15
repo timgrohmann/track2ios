@@ -45,6 +45,10 @@ extension TimetablesAPI {
             self.c = element.attribute(by: "c")?.text
             self.n = element.attribute(by: "n")?.text
         }
+        
+        func getDisplayName() -> String {
+            return "\(c ?? "?") \(n ?? "?")"
+        }
     }
     
     struct StopEvent {

@@ -16,7 +16,7 @@ class TrainSelectTableViewCell: UITableViewCell {
     @IBOutlet weak var viaLabel: MarqueeLabel!
     @IBOutlet weak var departureTimeLabel: UILabel!
     
-    var train: DBAPI.APITrain?
+    var departure: TimetablesAPI.Stop?
     var station: DBAPI.APIStation?
     
     
@@ -25,40 +25,20 @@ class TrainSelectTableViewCell: UITableViewCell {
         viaLabel.type = .continuous
         viaLabel.animationCurve = .easeInOut
         
-        trainLabel.text = train?.name
-        goalLabel.text = train?.stops.last?.stopName
-        viaLabel.text = viaLabelText()
-        departureTimeLabel.text = currentStop()?.depTime ?? ""
+        trainLabel.text = departure?.train.getDisplayName()
+        goalLabel.text = departure?.departure!.path.last
+        viaLabel.text = "über: " + (departure?.departure!.path.joined(separator: ", ") ?? "")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .none
+        if let depTime = departure?.departure?.timestamp {
+            departureTimeLabel.text = dateFormatter.string(from: depTime)
+        }
     }
     
-    func displayTrain(train: DBAPI.APITrain, at station: DBAPI.APIStation?) {
-        self.train = train
+    func displayDeparture(_ departure: TimetablesAPI.Stop, at station: DBAPI.APIStation?) {
+        self.departure = departure
         self.station = station
     }
-    
-    func viaLabelText() -> String {
-        
-        guard let currentStationIndex = getCurrentStationIndexInArray() else {
-            return ""
-        }
-        
-        var stationsAfterCurrent = train?.stops[currentStationIndex...] ?? []
-        stationsAfterCurrent.removeFirst()
-        
-        return "über: " + stationsAfterCurrent.map { $0.stopName }.joined(separator: ", ")
-    }
-    
-    func currentStop() -> DBAPI.APITrainStopDetail? {
-        
-        guard let currentStationIndex = getCurrentStationIndexInArray() else {
-            return nil
-        }
-        
-        return train?.stops[currentStationIndex]
-    }
-    
-    func getCurrentStationIndexInArray() -> Int? {
-        return train?.stops.firstIndex { $0.stopId == station?.id }
-    }
-    
 }

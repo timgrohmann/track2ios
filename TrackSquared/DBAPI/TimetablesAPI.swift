@@ -78,7 +78,13 @@ class TimetablesAPI {
             let xml = SWXMLHash.parse(data)
             let xmlStops = xml["timetable"]["s"].all
             
-            let stops: [Stop] = xmlStops.compactMap { try? Stop(xml: $0) }
+            var stops: [Stop] = xmlStops.compactMap { try? Stop(xml: $0) }
+            
+            stops = stops.sorted(by: { (s1, s2) -> Bool in
+                let event1 = s1.departure ?? s1.arrival!
+                let event2 = s2.departure ?? s2.arrival!
+                return event1.timestamp < event2.timestamp
+            })
             
             return stops
         }
