@@ -14,7 +14,6 @@ class DBAPI {
     let rootURL: String
     
     init() {
-        let bundle = Bundle.main
         if let tkn = DBAPISecrets.accessKey, let rurl = DBAPISecrets.rootPath {
             self.token = tkn
             self.version = "v1"

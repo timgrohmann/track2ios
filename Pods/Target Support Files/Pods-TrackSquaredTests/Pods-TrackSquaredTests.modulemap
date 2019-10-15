@@ -1,0 +1,6 @@
+framework module Pods_TrackSquaredTests {
+  umbrella header "Pods-TrackSquaredTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

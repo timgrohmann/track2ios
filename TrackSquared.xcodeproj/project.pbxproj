@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07C2B549F4822B50517313EA /* Pods_TrackSquared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCA3931B6DE5E2872C28F45 /* Pods_TrackSquared.framework */; };
 		181E690B21AD5BF400C0141B /* TrackSquared.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 181E690921AD5BF400C0141B /* TrackSquared.xcdatamodeld */; };
 		181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDFCA21A02594000105C2 /* TrainEvent.swift */; };
 		183E443521AD2B990032E0E2 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E443421AD2B990032E0E2 /* Station.swift */; };
@@ -15,6 +16,7 @@
 		1855EEB62350CF5800ABCBC2 /* DBOpenData.secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855EEB52350CF5800ABCBC2 /* DBOpenData.secret.plist */; };
 		1856125321A6D1600041AD39 /* DBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125221A6D1600041AD39 /* DBAPI.swift */; };
 		1856125B21A6D47E0041AD39 /* TrackSquaredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */; };
+		185E63582355C2D60086B88D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 185E63572355C2D60086B88D /* Podfile */; };
 		186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */; };
 		186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */; };
 		1875319F21AED5A500E94244 /* TrainSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */; };
@@ -43,6 +45,7 @@
 		18F90639219C4E1100505A9A /* TrainSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F90637219C4E1100505A9A /* TrainSelectViewController.swift */; };
 		18F9063A219C4E1100505A9A /* TrainSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F90638219C4E1100505A9A /* TrainSelectViewController.xib */; };
 		18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9063E219C6D5500505A9A /* ButtonDesignable.swift */; };
+		B2FEA950CB4521BDD0BC431B /* Pods_TrackSquaredTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8830F793133C9108C4A079 /* Pods_TrackSquaredTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,7 @@
 		1856125821A6D47E0041AD39 /* TrackSquaredTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackSquaredTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1856125A21A6D47E0041AD39 /* TrackSquaredTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSquaredTests.swift; sourceTree = "<group>"; };
 		1856125C21A6D47E0041AD39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185E63572355C2D60086B88D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		186C57DD21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleJourneyHistoryViewController.swift; sourceTree = "<group>"; };
 		186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHistoryPartTableViewCell.swift; sourceTree = "<group>"; };
 		1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSelectTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +100,12 @@
 		18F90637219C4E1100505A9A /* TrainSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSelectViewController.swift; sourceTree = "<group>"; };
 		18F90638219C4E1100505A9A /* TrainSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainSelectViewController.xib; sourceTree = "<group>"; };
 		18F9063E219C6D5500505A9A /* ButtonDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDesignable.swift; sourceTree = "<group>"; };
+		3283C7D7A2A84CB8EAD3F79A /* Pods-TrackSquared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackSquared.release.xcconfig"; path = "Target Support Files/Pods-TrackSquared/Pods-TrackSquared.release.xcconfig"; sourceTree = "<group>"; };
+		4EB918F75170E9D1611086F6 /* Pods-TrackSquaredTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackSquaredTests.debug.xcconfig"; path = "Target Support Files/Pods-TrackSquaredTests/Pods-TrackSquaredTests.debug.xcconfig"; sourceTree = "<group>"; };
+		533FDC0C78E0264931A9C434 /* Pods-TrackSquaredTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackSquaredTests.release.xcconfig"; path = "Target Support Files/Pods-TrackSquaredTests/Pods-TrackSquaredTests.release.xcconfig"; sourceTree = "<group>"; };
+		9BCA3931B6DE5E2872C28F45 /* Pods_TrackSquared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackSquared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E07FA7E47D5C06527E58BF /* Pods-TrackSquared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackSquared.debug.xcconfig"; path = "Target Support Files/Pods-TrackSquared/Pods-TrackSquared.debug.xcconfig"; sourceTree = "<group>"; };
+		DE8830F793133C9108C4A079 /* Pods_TrackSquaredTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackSquaredTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FEA950CB4521BDD0BC431B /* Pods_TrackSquaredTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EB7D65234F80E800F63C66 /* QuartzCore.framework in Frameworks */,
+				07C2B549F4822B50517313EA /* Pods_TrackSquared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,11 +189,13 @@
 		18E071072196D1D600761D4D = {
 			isa = PBXGroup;
 			children = (
+				185E63572355C2D60086B88D /* Podfile */,
 				18F9062E219ADB2C00505A9A /* Resources */,
 				18E071122196D1D600761D4D /* TrackSquared */,
 				1856125921A6D47E0041AD39 /* TrackSquaredTests */,
 				18E071112196D1D600761D4D /* Products */,
 				18EB7D63234F80E800F63C66 /* Frameworks */,
+				BBA597EB0FF497802F1A6167 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				18EB7D64234F80E800F63C66 /* QuartzCore.framework */,
+				9BCA3931B6DE5E2872C28F45 /* Pods_TrackSquared.framework */,
+				DE8830F793133C9108C4A079 /* Pods_TrackSquaredTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -275,6 +291,17 @@
 			path = UIElements;
 			sourceTree = "<group>";
 		};
+		BBA597EB0FF497802F1A6167 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4E07FA7E47D5C06527E58BF /* Pods-TrackSquared.debug.xcconfig */,
+				3283C7D7A2A84CB8EAD3F79A /* Pods-TrackSquared.release.xcconfig */,
+				4EB918F75170E9D1611086F6 /* Pods-TrackSquaredTests.debug.xcconfig */,
+				533FDC0C78E0264931A9C434 /* Pods-TrackSquaredTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,6 +309,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1856125F21A6D47E0041AD39 /* Build configuration list for PBXNativeTarget "TrackSquaredTests" */;
 			buildPhases = (
+				69F569CB482ACF0B0D3210E3 /* [CP] Check Pods Manifest.lock */,
 				1856125421A6D47E0041AD39 /* Sources */,
 				1856125521A6D47E0041AD39 /* Frameworks */,
 				1856125621A6D47E0041AD39 /* Resources */,
@@ -300,10 +328,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18E071252196D1D700761D4D /* Build configuration list for PBXNativeTarget "TrackSquared" */;
 			buildPhases = (
+				A3C9AE24655200C8A3432232 /* [CP] Check Pods Manifest.lock */,
 				18E0710C2196D1D600761D4D /* Sources */,
 				18E0710D2196D1D600761D4D /* Frameworks */,
 				18E0710E2196D1D600761D4D /* Resources */,
 				18F90633219B1A6900505A9A /* ShellScript */,
+				2154B6DEBD203E655D4A0640 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,10 +356,12 @@
 				TargetAttributes = {
 					1856125721A6D47E0041AD39 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1100;
 						TestTargetID = 18E0710F2196D1D600761D4D;
 					};
 					18E0710F2196D1D600761D4D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -364,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185E63582355C2D60086B88D /* Podfile in Resources */,
 				18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */,
 				18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */,
 				187531A021AED5A500E94244 /* TrainSelectTableViewCell.xib in Resources */,
@@ -395,6 +428,67 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n\n\n";
+		};
+		2154B6DEBD203E655D4A0640 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackSquared/Pods-TrackSquared-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackSquared/Pods-TrackSquared-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackSquared/Pods-TrackSquared-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69F569CB482ACF0B0D3210E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrackSquaredTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3C9AE24655200C8A3432232 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrackSquared-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -471,6 +565,7 @@
 /* Begin XCBuildConfiguration section */
 		1856126021A6D47E0041AD39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EB918F75170E9D1611086F6 /* Pods-TrackSquaredTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -485,7 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquaredTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrackSquared.app/TrackSquared";
 			};
@@ -493,6 +588,7 @@
 		};
 		1856126121A6D47E0041AD39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 533FDC0C78E0264931A9C434 /* Pods-TrackSquaredTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -507,7 +603,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquaredTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TrackSquared.app/TrackSquared";
 			};
@@ -633,6 +729,7 @@
 		};
 		18E071262196D1D700761D4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4E07FA7E47D5C06527E58BF /* Pods-TrackSquared.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -645,13 +742,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		18E071272196D1D700761D4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3283C7D7A2A84CB8EAD3F79A /* Pods-TrackSquared.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -664,7 +762,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = timgrohmann.TrackSquared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
