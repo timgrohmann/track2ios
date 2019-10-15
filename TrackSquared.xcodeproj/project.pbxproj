@@ -35,7 +35,6 @@
 		18E071192196D1D600761D4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E071172196D1D600761D4D /* Main.storyboard */; };
 		18E0711E2196D1D700761D4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711D2196D1D700761D4D /* Assets.xcassets */; };
 		18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E0711F2196D1D700761D4D /* LaunchScreen.storyboard */; };
-		18EB7D62234F809200F63C66 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB7D61234F809200F63C66 /* MarqueeLabel.swift */; };
 		18EB7D65234F80E800F63C66 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EB7D64234F80E800F63C66 /* QuartzCore.framework */; };
 		18EE7F0421AC304C004DF366 /* DBAPIDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */; };
 		18F9062B219AB3CF00505A9A /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */; };
@@ -90,7 +89,6 @@
 		18E0711D2196D1D700761D4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E071202196D1D700761D4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E071222196D1D700761D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18EB7D61234F809200F63C66 /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		18EB7D64234F80E800F63C66 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18EE7F0321AC304C004DF366 /* DBAPIDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAPIDataTypes.swift; sourceTree = "<group>"; };
 		18F9062A219AB3CF00505A9A /* StationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 		18E071122196D1D600761D4D /* TrackSquared */ = {
 			isa = PBXGroup;
 			children = (
-				18EB7D60234F807600F63C66 /* Frameworks */,
 				1856124F21A6CA660041AD39 /* DBAPI */,
 				18E071222196D1D700761D4D /* Info.plist */,
 				18E071282196D1E800761D4D /* Data */,
@@ -244,14 +241,6 @@
 				183E443421AD2B990032E0E2 /* Station.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		18EB7D60234F807600F63C66 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				18EB7D61234F809200F63C66 /* MarqueeLabel.swift */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		18EB7D63234F80E800F63C66 /* Frameworks */ = {
@@ -527,7 +516,6 @@
 				183E443A21AD34530032E0E2 /* ModelMapperv1-v2.xcmappingmodel in Sources */,
 				18E071162196D1D600761D4D /* ViewController.swift in Sources */,
 				186C57DE21A2B9C100F3BC04 /* SingleJourneyHistoryViewController.swift in Sources */,
-				18EB7D62234F809200F63C66 /* MarqueeLabel.swift in Sources */,
 				18E071142196D1D600761D4D /* AppDelegate.swift in Sources */,
 				18F9063F219C6D5500505A9A /* ButtonDesignable.swift in Sources */,
 			);

@@ -6,6 +6,7 @@ target 'TrackSquared' do
 
     # Pods for TrackSquared
     pod 'Alamofire', '~> 5.0.0-rc.2'
+    pod 'MarqueeLabel'
 
     target 'TrackSquaredTests' do
         inherit! :search_paths
