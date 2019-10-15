@@ -115,7 +115,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccb-NE-DQy">
                             <rect key="frame" x="10" y="0.0" width="42" height="30"/>
                             <state key="normal" title="früher">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="earlierButtonPressed:" destination="-1" eventType="touchUpInside" id="aiw-P5-CY4"/>
@@ -124,7 +124,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arz-UF-CJN">
                             <rect key="frame" x="321" y="0.0" width="44" height="30"/>
                             <state key="normal" title="später">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="laterButtonPresse:" destination="-1" eventType="touchUpInside" id="zY3-jy-avH"/>
@@ -142,7 +142,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Dbc-9C-SH8" secondAttribute="trailing" constant="20" id="4Oq-vT-2QG"/>
                 <constraint firstItem="0P6-UD-zB9" firstAttribute="top" secondItem="Mnc-nw-n8A" secondAttribute="bottom" constant="10" id="8tO-9n-cjU"/>
