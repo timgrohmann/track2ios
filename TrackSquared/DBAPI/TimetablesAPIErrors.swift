@@ -10,6 +10,6 @@ import Foundation
 
 extension TimetablesAPI {
     enum APIError: Error {
-        case MalformedXML
+        case malformedXML
     }
 }

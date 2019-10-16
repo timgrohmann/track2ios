@@ -8,6 +8,7 @@ target 'TrackSquared' do
     pod 'Alamofire', '~> 5.0.0-rc.2'
     pod 'MarqueeLabel'
     pod 'SWXMLHash', '~> 5.0.0'
+    pod 'SwiftLint'
 
     target 'TrackSquaredTests' do
         inherit! :search_paths

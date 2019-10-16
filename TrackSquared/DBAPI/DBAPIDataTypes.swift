@@ -13,7 +13,7 @@ extension DBAPI {
         var name: String
         var id: Int
     }
-    
+
     struct APIDeparture: Decodable {
         var name: String
         var type: String? //Apparently some departures don't have types associated with them - DBOpenData has been contacted
@@ -21,7 +21,7 @@ extension DBAPI {
         var track: String?
         var detailsId: String
     }
-    
+
     struct APITrainStopDetail: Decodable {
         var stopId: Int
         var stopName: String
@@ -31,7 +31,7 @@ extension DBAPI {
         var type: String
         var `operator`: String
     }
-    
+
     class APITrain {
         var stops: [APITrainStopDetail]
         lazy var name: String? = {
@@ -40,7 +40,7 @@ extension DBAPI {
             }
             return nil
         }()
-        
+
         init(stops: [APITrainStopDetail]) {
             self.stops = stops
         }

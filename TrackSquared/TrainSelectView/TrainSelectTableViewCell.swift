@@ -15,20 +15,19 @@ class TrainSelectTableViewCell: UITableViewCell {
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var viaLabel: MarqueeLabel!
     @IBOutlet weak var departureTimeLabel: UILabel!
-    
+
     var departure: TimetablesAPI.Stop?
     var station: DBAPI.APIStation?
-    
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         viaLabel.type = .continuous
         viaLabel.animationCurve = .easeInOut
-        
+
         trainLabel.text = departure?.train.getDisplayName()
         goalLabel.text = departure?.departure!.path.last
         viaLabel.text = "über: " + (departure?.departure!.path.joined(separator: ", ") ?? "")
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .none
@@ -36,7 +35,7 @@ class TrainSelectTableViewCell: UITableViewCell {
             departureTimeLabel.text = dateFormatter.string(from: depTime)
         }
     }
-    
+
     func displayDeparture(_ departure: TimetablesAPI.Stop, at station: DBAPI.APIStation?) {
         self.departure = departure
         self.station = station

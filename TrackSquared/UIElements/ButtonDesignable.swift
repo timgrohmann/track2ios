@@ -19,7 +19,7 @@ class ButtonDesignable: UIButton {
             self.layer.cornerRadius = CGFloat(newValue)
         }
     }
-    
+
     @IBInspectable var enabledColor: UIColor? {
         didSet {
             if self.isEnabled {
@@ -34,7 +34,7 @@ class ButtonDesignable: UIButton {
             }
         }
     }
-    
+
     override var isEnabled: Bool {
         didSet {
             UIView.animate(withDuration: 0.2) {
@@ -44,8 +44,8 @@ class ButtonDesignable: UIButton {
                     self.backgroundColor = self.disabledColor
                 }
             }
-            
+
         }
     }
-    
+
 }

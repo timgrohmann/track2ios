@@ -15,16 +15,15 @@ class JourneyHistoryPartTableViewCell: UITableViewCell {
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var goalTimeLabel: UILabel!
     @IBOutlet weak var trainLabel: UILabel!
-    
+
     @IBInspectable var positiveDelayTextColor: UIColor?
     @IBInspectable var negativeOrNoDelayTextColor: UIColor?
-    
 
     func displayPart(part: JourneyPart) {
         if let startEv = part.start, let goalEv = part.goal {
             startStationLabel.text = startEv.station?.name
             goalStationLabel.text = goalEv.station?.name
-            
+
             startTimeLabel.text = startEv.timeRep()
             if startEv.getDelay() > 0 {
                 startTimeLabel.textColor = positiveDelayTextColor

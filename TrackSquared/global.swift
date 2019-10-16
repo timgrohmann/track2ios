@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 import CoreData
 
-var delegate: AppDelegate{
+var delegate: AppDelegate {
+    // swiftlint:disable:next force_cast
     return UIApplication.shared.delegate as! AppDelegate
 }
 
 var dataController: DataController {
+    // swiftlint:disable:next force_cast
     return (UIApplication.shared.delegate as! AppDelegate).dataController
 }
 

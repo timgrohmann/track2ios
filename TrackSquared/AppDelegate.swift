@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "TrackSquared")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var dataController: DataController = {
         return DataController(ctx: persistentContainer.viewContext)
     }()
-    
+
     // MARK: - Core Data Saving support
 
     func saveContext () {
@@ -83,4 +83,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

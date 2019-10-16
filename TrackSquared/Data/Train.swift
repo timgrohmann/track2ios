@@ -10,26 +10,27 @@ import Foundation
 
 extension Train {
     enum Types: Int16 {
+        // swiftlint:disable:next identifier_name
         case ICE = 1, IC = 2, RE = 3, RB = 4, S = 5, NE = 6, X = 7
     }
-    
+
     struct NameDesriptor {
         let type: String
         let number: String
     }
-    
-    static let typeMap: [String:Types] = ["ICE":.ICE,"IC":.IC,"RE":.RE,"RB":.RB,"S":.S]
-    static let typeNameMap: [Types:String] = [.ICE:"ICE",.IC:"IC",.RE:"RE",.RB:"RB",.S:"S"]
-    
+
+    static let typeMap: [String: Types] = ["ICE": .ICE, "IC": .IC, "RE": .RE, "RB": .RB, "S": .S]
+    static let typeNameMap: [Types: String] = [.ICE: "ICE", .IC: "IC", .RE: "RE", .RB: "RB", .S: "S"]
+
     var type: Train.Types {
         get {
             return Types(rawValue: self.raw_type)!
         }
-        set (newType){
+        set (newType) {
             self.raw_type = newType.rawValue
         }
     }
-    
+
     /**
      * A printable description of this train object.
      */

@@ -13,25 +13,25 @@ class DataController {
     let ctx: NSManagedObjectContext
     let api = DBAPI()
     let timetablesAPI = TimetablesAPI()
-    
+
     init(ctx: NSManagedObjectContext) {
         self.ctx = ctx
     }
-    
+
     func prepare() {
         if getStations().count == 0 {
             print("Loading stations from csv")
             CSVParser().loadStationsFromSave()
         }
-        
+
         let fetch = NSFetchRequest<User>(entityName: "User")
         if executeFetch(fetch: fetch).count == 0 {
-            let u = User(context: ctx)
-            u.currentJourney = makeJourney()
+            let user = User(context: ctx)
+            user.currentJourney = makeJourney()
         }
         save()
     }
-    
+
     /**
      * List all currently known stations.
      */
@@ -39,11 +39,11 @@ class DataController {
         let fetch = NSFetchRequest<Station>(entityName: "Station")
         return executeFetch(fetch: fetch)
     }
-    
+
     func makeStation() -> Station {
         return Station(context: ctx)
     }
-    
+
     /**
      Search known stations.
      - parameters:
@@ -55,14 +55,13 @@ class DataController {
         let fetch = NSFetchRequest<Station>(entityName: "Station")
         fetch.predicate = NSPredicate(format: "name CONTAINS[c] %@ OR code CONTAINS[c] %@", search, search)
         var stations = executeFetch(fetch: fetch)
-        stations.sort() {
-            s1, s2 in
+        stations.sort { s1, s2 in
             let cmp = s1.code!.compare(s2.code!)
             return search.lowercased() == s1.code!.lowercased() || s1.code!.count < s2.code!.count || s1.code!.count ==  s2.code!.count && cmp == .orderedAscending
         }
         return stations
     }
-    
+
     /**
      Search one station by name.
      - parameters:
@@ -79,7 +78,7 @@ class DataController {
         }
         return nil
     }
-    
+
     /**
      Search one station by DS100 code.
      - parameters:
@@ -96,7 +95,7 @@ class DataController {
         }
         return nil
     }
-    
+
     /**
      Search one train.
      - parameters:
@@ -114,28 +113,28 @@ class DataController {
         }
         return nil
     }
-    
+
     func makeTrain() -> Train {
         return Train(context: ctx)
     }
-    
+
     func makeTrainEvent() -> TrainEvent {
         return TrainEvent(context: ctx)
     }
-    
+
     func getJourneys() -> [Journey] {
         let fetch = NSFetchRequest<Journey>(entityName: "Journey")
         return executeFetch(fetch: fetch)
     }
-    
+
     func makeJourney() -> Journey {
         return Journey(context: ctx)
     }
-    
+
     func makeJourneyPart() -> JourneyPart {
         return JourneyPart(context: ctx)
     }
-    
+
     /**
      The current User object.
      */
@@ -143,7 +142,7 @@ class DataController {
         let fetch = NSFetchRequest<User>(entityName: "User")
         return executeFetch(fetch: fetch)[0]
     }
-    
+
     /**
      Executes a fetch request and returns an array of results.
      May cause fatal error for ill-formatted requests.
@@ -158,16 +157,16 @@ class DataController {
             //return []
         }
     }
-    
+
     /**
      Saves current context.
      */
     func save() {
         delegate.saveContext()
     }
-    
+
     func delete(_ obj: NSManagedObject) {
         ctx.delete(obj)
     }
-    
+
 }

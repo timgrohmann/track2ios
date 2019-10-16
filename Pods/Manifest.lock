@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
   - MarqueeLabel (4.0.0)
+  - SwiftLint (0.35.0)
   - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
   - MarqueeLabel
+  - SwiftLint
   - SWXMLHash (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - MarqueeLabel
+    - SwiftLint
     - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
+  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: 30daaec8417228a8510e5913795f8b7a041b48d3
+PODFILE CHECKSUM: 6339c3c2a66dcedc2b29ba1a39f3b392a26a68dd
 
 COCOAPODS: 1.8.3

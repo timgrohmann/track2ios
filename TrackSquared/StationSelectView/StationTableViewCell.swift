@@ -12,11 +12,10 @@ class StationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var stationLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
-    
+
     func display(station: Station) {
         stationLabel.text = station.name
         codeLabel.text = station.code
     }
-    
-    
+
 }

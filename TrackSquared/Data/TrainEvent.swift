@@ -9,7 +9,7 @@
 import Foundation
 
 extension TrainEvent {
-    
+
     /**
      * The number of minutes of delay for this event.
      */
@@ -20,7 +20,7 @@ extension TrainEvent {
             return 0
         }
     }
-    
+
     func timeRep() -> String {
         guard let time = self.time, let scheduledTime = self.scheduledTime else {
             return ""

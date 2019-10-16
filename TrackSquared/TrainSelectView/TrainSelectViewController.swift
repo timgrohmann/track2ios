@@ -9,65 +9,64 @@
 import UIKit
 
 class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+
     @IBOutlet weak var descriptorLabel: UILabel!
     @IBOutlet weak var buttonBottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var trainTableView: UITableView!
-    
-    let selectedCallback: (Train?, Date?) -> ()
+
+    let selectedCallback: (Train?, Date?) -> Void
     let station: DBAPI.APIStation?
 
     var departures: [TimetablesAPI.Stop] = []
     var selectedStop: TimetablesAPI.Stop?
-    
+
     var tableFadeOutLayer: CAGradientLayer?
-    
+
     var hourOffset: Int = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         indicateInvalidity()
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
-        
+
         loadDeparturesForStation()
 
     }
-    
+
     override func viewDidLayoutSubviews() {
-        addMaskLayerToTableView()
+        //addMaskLayerToTableView()
     }
 
-    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?, Date?) -> ()) {
+    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?, Date?) -> Void) {
         self.selectedCallback = selectedCallback
         self.station = station
         super.init(nibName: "TrainSelectViewController", bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
-        self.selectedCallback = {_,_  in}
+        self.selectedCallback = {_, _  in}
         self.station = nil
         super.init(coder: aDecoder)
     }
-    
+
     @IBAction func inputTextFieldChanged(_ sender: UITextField) {
         guard let text = sender.text else {return}
-        
+
         processNewTrain(trainName: text)
     }
-    
+
     func processNewTrain(trainName: String) {
         let parts = makeParts(text: trainName)
-        
+
         if let trainName = parts {
             descriptorLabel.text = String(format: "%@ %@", trainName.type, trainName.number)
             descriptorLabel.textColor = UIColor.black
@@ -76,26 +75,27 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             indicateInvalidity()
         }
     }
-    
+
     func isValid(text: String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: "^([A-Z]+) {0,1}([0-9]+)$")
-        let result = regex.matches(in:text, range: NSRange(text.startIndex..., in: text))
+        guard let regex = try? NSRegularExpression(pattern: "^([A-Z]+) {0,1}([0-9]+)$") else { return true }
+        let result = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
         return result.count == 1
     }
-    
+
     func makeParts(text: String) -> Train.NameDesriptor? {
+        // swiftlint:disable:next force_try
         let regex = try! NSRegularExpression(pattern: "^([A-Z]+) {0,1}([0-9]+)$")
-        
+
         let startIndex = text.startIndex
-        let result = regex.matches(in:text, range: NSRange(startIndex..., in: text))
-        
+        let result = regex.matches(in: text, range: NSRange(startIndex..., in: text))
+
         if result.count == 1 {
             let match = result[0]
             let typeRange = match.range(at: 1)
             let typeStart = text.index(startIndex, offsetBy: typeRange.location)
             let typeEnd = text.index(startIndex, offsetBy: typeRange.location + typeRange.length)
             let type = text[typeStart..<typeEnd]
-            
+
             let numberRange = match.range(at: 2)
             let numberStart = text.index(startIndex, offsetBy: numberRange.location)
             let numberEnd = text.index(startIndex, offsetBy: numberRange.location + numberRange.length)
@@ -104,9 +104,9 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             return nil
         }
-        
+
     }
-    
+
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -117,83 +117,82 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-    
+
     func indicateInvalidity() {
         descriptorLabel.text = "Nicht gültig!"
         descriptorLabel.textColor = UIColor.red
         chooseButton.isEnabled = false
     }
-    
+
     func finishedWithResult(_ stat: Train?, date: Date?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
         selectedCallback(stat, date)
     }
-    
+
     @IBAction func abortButtonPressed(_ sender: Any) {
         finishedWithResult(nil, date: nil)
     }
-    
+
     @IBAction func chooseButtonPressed(_ sender: Any) {
         if let nameDesc = makeParts(text: searchTextField.text ?? "") {
             let traintype = Train.typeMap[nameDesc.type.uppercased()] ?? .NE
             let train = dataController.getTrain(number: nameDesc.number, trainType: traintype) ?? dataController.makeTrain()
-            
+
             train.number = nameDesc.number
             train.type = traintype
-            
+
             finishedWithResult(train, date: selectedStop?.departure!.timestamp)
         }
     }
-    
+
     @IBAction func laterButtonPresse(_ sender: Any) {
         hourOffset += 1
         loadDeparturesForStation()
     }
-    
+
     @IBAction func earlierButtonPressed(_ sender: Any) {
         hourOffset -= 1
         loadDeparturesForStation()
     }
-    
+
     func loadDeparturesForStation() {
         guard let station = station else {
             return
         }
-        
-        dataController.timetablesAPI.getPlan(evaNo: String(station.id), date: Date().addingTimeInterval(60.0 * 60.0 * Double(hourOffset))) {
-            result in
+
+        dataController.timetablesAPI.getPlan(evaNo: String(station.id), date: Date().addingTimeInterval(60.0 * 60.0 * Double(hourOffset))) { result in
             switch result {
             case .success(let stops):
                 self.departures = stops.filter { $0.departure != nil }
-            case .failure(_):
+            case .failure:
                 self.departures = []
             }
-            
+
             DispatchQueue.main.async {
                 self.trainTableView.reloadData()
             }
         }
     }
-    
+
     // MARK: - Table View
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return departures.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var c = trainTableView.dequeueReusableCell(withIdentifier: "train")
-        if c == nil {
-            c = UINib(nibName: "TrainSelectTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TrainSelectTableViewCell
+        var reusedCell = trainTableView.dequeueReusableCell(withIdentifier: "train")
+        if reusedCell == nil {
+            reusedCell = UINib(nibName: "TrainSelectTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? TrainSelectTableViewCell
         }
-        guard let cell = c as? TrainSelectTableViewCell else {
+        guard let cell = reusedCell as? TrainSelectTableViewCell else {
             fatalError("Could not create new cell")
         }
         cell.displayDeparture(departures[indexPath.row], at: station)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedStop = departures[indexPath.row]
         if let trainName = selectedStop?.train.getDisplayName() {
@@ -201,26 +200,26 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             processNewTrain(trainName: trainName)
         }
     }
-    
+
     func addMaskLayerToTableView() {
         if tableFadeOutLayer != nil {
             return
         }
-        
+
         tableFadeOutLayer = CAGradientLayer()
-        
+
         let transparent = UIColor(white: 1.0, alpha: 0.0).cgColor
-        let white = UIColor(white: 1.0, alpha: 1.0).cgColor
-        
+        let white = UIColor.systemBackground.cgColor
+
         let space = 0.02
-        
-        tableFadeOutLayer?.colors = [white,transparent,transparent,white]
+
+        tableFadeOutLayer?.colors = [white, transparent, transparent, white]
         tableFadeOutLayer?.locations = [0.0, NSNumber(value: space), NSNumber(value: 1.0 - space), 1.0]
         tableFadeOutLayer?.position = trainTableView.frame.origin
         tableFadeOutLayer?.bounds = CGRect(x: 0.0, y: 0.0, width: trainTableView.frame.width, height: trainTableView.frame.height)
         tableFadeOutLayer?.anchorPoint = .zero
         tableFadeOutLayer?.name = "Table transparency"
-        
+
         view.layer.addSublayer(tableFadeOutLayer!)
     }
 }

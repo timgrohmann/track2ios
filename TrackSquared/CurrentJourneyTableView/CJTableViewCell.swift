@@ -15,15 +15,15 @@ class CJTableViewCell: UITableViewCell {
     @IBOutlet weak var goalTimeLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var trainLabel: UILabel!
-    
+
     @IBInspectable var positiveDelayTextColor: UIColor?
     @IBInspectable var negativeOrNoDelayTextColor: UIColor?
-    
+
     func displayPart(part: JourneyPart) {
         if let startEv = part.start, let goalEv = part.goal {
             start.text = startEv.station?.name
             goal.text = goalEv.station?.name
-            
+
             startTimeLabel.text = startEv.timeRep()
             if startEv.getDelay() > 0 {
                 startTimeLabel.textColor = positiveDelayTextColor
@@ -39,7 +39,7 @@ class CJTableViewCell: UITableViewCell {
             trainLabel.text = part.train?.stringRepresentation()
         }
     }
-    
+
     func timeRep(of event: TrainEvent) -> String {
         guard let time = event.time, let scheduledTime = event.scheduledTime else {
             return ""

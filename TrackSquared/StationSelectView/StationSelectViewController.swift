@@ -9,18 +9,17 @@
 import UIKit
 
 class StationSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    
+
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var stationsTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    
-    
+
     var stations: [Station] = []
-    var selectedCallback: ((Station?) -> ())
-    
+    var selectedCallback: ((Station?) -> Void)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //Used to get keyboard size to adjust bottom table offset
         NotificationCenter.default.addObserver(
             self,
@@ -30,12 +29,12 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         )
         searchTextField.becomeFirstResponder()
     }
-    
-    init(selectedCallback: @escaping (Station?) -> ()) {
+
+    init(selectedCallback: @escaping (Station?) -> Void) {
         self.selectedCallback = selectedCallback
         super.init(nibName: "StationSelectView", bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         self.selectedCallback = {_ in}
         super.init(coder: aDecoder)
@@ -44,39 +43,39 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func abortButtonPressed(_ sender: Any) {
         finishedWithResult(nil)
     }
-    
+
     func finishedWithResult(_ stat: Station?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
         selectedCallback(stat)
     }
-    
+
     // MARK: - Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stations.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var c = tableView.dequeueReusableCell(withIdentifier: "st")
-        if c == nil {
-            c = UINib(nibName: "StationTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! StationTableViewCell
+        var reusedCell = tableView.dequeueReusableCell(withIdentifier: "st")
+        if reusedCell == nil {
+            reusedCell = UINib(nibName: "StationTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? StationTableViewCell
         }
-        guard let cell = c as? StationTableViewCell else {
+        guard let cell = reusedCell as? StationTableViewCell else {
             fatalError("Could not create new cell")
         }
         let ind = indexPath.last!
         cell.display(station: stations[ind])
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         finishedWithResult(stations[indexPath.last!])
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return stations[indexPath.row].code == ""
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let toBeDeleted = stations[indexPath.row]
@@ -84,15 +83,15 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
             dataController.delete(toBeDeleted)
             dataController.save()
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            
+
         }
     }
 
     // MARK: - Text field
-    
+
     @IBAction func searchValueChanged(_ sender: Any) {
-        let s = searchTextField.text ?? ""
-        if s.count >= 1{
+        let searchString = searchTextField.text ?? ""
+        if searchString.count >= 1 {
             /*dataController.api.getLocations(name: s) {
                 stat, error in
                 if error == nil {
@@ -102,14 +101,14 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                 }
             }*/
-            stations = dataController.searchStations(search: s)
+            stations = dataController.searchStations(search: searchString)
             self.stationsTableView.reloadData()
         } else {
             stations = []
             stationsTableView.reloadData()
         }
     }
-    
+
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -117,7 +116,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
             tableViewBottomConstraint.constant = keyboardHeight
         }
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let manualName = searchTextField.text, manualName.count >= 3 {
             let newStation = dataController.makeStation()
@@ -129,5 +128,5 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return false
     }
-    
+
 }

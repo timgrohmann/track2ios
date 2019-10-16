@@ -14,8 +14,7 @@ class JourneyArchiveTableViewCell: UITableViewCell {
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
-    
-    
+
     func display(journey: Journey) {
         guard let first = journey.parts?.firstObject as? JourneyPart,
             let last = journey.parts?.lastObject as? JourneyPart else {
@@ -24,7 +23,7 @@ class JourneyArchiveTableViewCell: UITableViewCell {
         dateLabel.text = DateFormatter.localizedString(from: first.start!.time!, dateStyle: .medium, timeStyle: .short)
         startLabel.text = first.start?.station?.name
         goalLabel.text = last.goal?.station?.name
-        
+
         let interval = last.goal!.time!.timeIntervalSince(first.start!.time!)
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute]

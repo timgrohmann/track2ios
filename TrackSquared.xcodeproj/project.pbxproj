@@ -24,6 +24,7 @@
 		186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */; };
 		1875319F21AED5A500E94244 /* TrainSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */; };
 		187531A021AED5A500E94244 /* TrainSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */; };
+		187F85B223573202004E3442 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 187F85B123573202004E3442 /* .swiftlint.yml */; };
 		18A44A4D21973FD80058C966 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4C21973FD80058C966 /* global.swift */; };
 		18A44A50219748A80058C966 /* CJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A44A4F219748A80058C966 /* CJTableViewCell.swift */; };
 		18B8E89723562DB4006277CE /* TimetablesAPIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */; };
@@ -80,6 +81,7 @@
 		186C57DF21A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHistoryPartTableViewCell.swift; sourceTree = "<group>"; };
 		1875319D21AED5A500E94244 /* TrainSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSelectTableViewCell.swift; sourceTree = "<group>"; };
 		1875319E21AED5A500E94244 /* TrainSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainSelectTableViewCell.xib; sourceTree = "<group>"; };
+		187F85B123573202004E3442 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		18A44A4C21973FD80058C966 /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		18A44A4F219748A80058C966 /* CJTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJTableViewCell.swift; sourceTree = "<group>"; };
 		18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesAPIErrors.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		18E071072196D1D600761D4D = {
 			isa = PBXGroup;
 			children = (
+				187F85B123573202004E3442 /* .swiftlint.yml */,
 				185E63572355C2D60086B88D /* Podfile */,
 				18F9062E219ADB2C00505A9A /* Resources */,
 				18E071122196D1D600761D4D /* TrackSquared */,
@@ -335,6 +338,7 @@
 				18E0710E2196D1D600761D4D /* Resources */,
 				18F90633219B1A6900505A9A /* ShellScript */,
 				2154B6DEBD203E655D4A0640 /* [CP] Embed Pods Frameworks */,
+				187F85B023573178004E3442 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -407,12 +411,30 @@
 				18E071192196D1D600761D4D /* Main.storyboard in Resources */,
 				1855EEB62350CF5800ABCBC2 /* DBOpenData.secret.plist in Resources */,
 				18F9063A219C4E1100505A9A /* TrainSelectViewController.xib in Resources */,
+				187F85B223573202004E3442 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		187F85B023573178004E3442 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		18F90633219B1A6900505A9A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,6 +598,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
 				INFOPLIST_FILE = TrackSquaredTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -599,6 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
 				INFOPLIST_FILE = TrackSquaredTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -739,7 +763,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
 				INFOPLIST_FILE = TrackSquared/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -759,7 +783,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z5JRGBTJE;
 				INFOPLIST_FILE = TrackSquared/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

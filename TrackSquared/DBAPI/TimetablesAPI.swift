@@ -14,7 +14,7 @@ class TimetablesAPI {
     let token: String
     let version: String
     let rootURL: String
-    
+
     init() {
         if let tkn = DBAPISecrets.accessKey, let rurl = DBAPISecrets.timetablesPath {
             self.token = tkn
@@ -24,32 +24,30 @@ class TimetablesAPI {
             fatalError("DBOpenData not configured")
         }
     }
-    
-    private func getFromAPI<T>(path: [String], completion: @escaping (Result<T, Error>) -> (), handler: @escaping (AFDataResponse<Data?>) throws -> T) {
-        let headers: HTTPHeaders = [.authorization(bearerToken: token),.accept("application/xml")]
-        
+
+    private func getFromAPI<T>(path: [String], completion: @escaping (Result<T, Error>) -> Void, handler: @escaping (AFDataResponse<Data?>) throws -> T) {
+        let headers: HTTPHeaders = [.authorization(bearerToken: token), .accept("application/xml")]
+
         AF.request(rootURL + "/" + path.joined(separator: "/"), method: .get, headers: headers)
-            .response {
-                response in
+            .response { response in
                 let result: Result<T, Error>
                 do {
-                    let t = try handler(response)
-                    result = .success(t)
+                    let handlerResult = try handler(response)
+                    result = .success(handlerResult)
                 } catch {
                     result = .failure(error)
                 }
                 completion(result)
         }
     }
-    
-    func getStations(pattern: String, completion: @escaping (Result<[Station], Error>) -> ()) {
-        getFromAPI(path: ["station", pattern], completion: completion) {
-            response in
+
+    func getStations(pattern: String, completion: @escaping (Result<[Station], Error>) -> Void) {
+        getFromAPI(path: ["station", pattern], completion: completion) { response in
             guard let data = response.data else {
-                throw DBAPI.APIError.NoData
+                throw DBAPI.APIError.noData
             }
             let xml = SWXMLHash.parse(data)
-            
+
             let stations = xml["stations"]["station"].all.compactMap {
                 let element = $0.element
                 if let name = element?.attribute(by: "name")?.text, let stringCode = element?.attribute(by: "eva")?.text, let code = Int(stringCode) {
@@ -60,32 +58,31 @@ class TimetablesAPI {
             return stations
         }
     }
-    
-    func getPlan(evaNo: String, date: Date, completion: @escaping (Result<[Stop], Error>) -> ()) {
+
+    func getPlan(evaNo: String, date: Date, completion: @escaping (Result<[Stop], Error>) -> Void) {
         let dayFormatter = DateFormatter()
         dayFormatter.dateFormat = "yyMMdd"
         let formattedDate = dayFormatter.string(from: date)
-        
+
         let hourFormatter = dayFormatter
         hourFormatter.dateFormat = "HH"
         let formattedHour = dayFormatter.string(from: date)
-        
-        getFromAPI(path: ["plan",evaNo,formattedDate,formattedHour], completion: completion) {
-            response in
+
+        getFromAPI(path: ["plan", evaNo, formattedDate, formattedHour], completion: completion) { response in
             guard let data = response.data else {
-                throw DBAPI.APIError.NoData
+                throw DBAPI.APIError.noData
             }
             let xml = SWXMLHash.parse(data)
             let xmlStops = xml["timetable"]["s"].all
-            
+
             var stops: [Stop] = xmlStops.compactMap { try? Stop(xml: $0) }
-            
+
             stops = stops.sorted(by: { (s1, s2) -> Bool in
                 let event1 = s1.departure ?? s1.arrival!
                 let event2 = s2.departure ?? s2.arrival!
                 return event1.timestamp < event2.timestamp
             })
-            
+
             return stops
         }
     }

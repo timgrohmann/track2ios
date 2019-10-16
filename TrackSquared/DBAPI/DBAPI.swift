@@ -12,7 +12,7 @@ class DBAPI {
     let token: String
     let version: String
     let rootURL: String
-    
+
     init() {
         if let tkn = DBAPISecrets.accessKey, let rurl = DBAPISecrets.rootPath {
             self.token = tkn
@@ -22,76 +22,72 @@ class DBAPI {
             fatalError("DBOpenData not configured")
         }
     }
-    
-    private func execute(endpoint: [String], params: [String:String] = [:], callback: @escaping (Data?, APIError?) -> ()){
+
+    private func execute(endpoint: [String], params: [String: String] = [:], callback: @escaping (Data?, APIError?) -> Void) {
         var endpoint = endpoint
         endpoint.insert(self.version, at: 0)
-        endpoint = endpoint.map(){$0.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!}
+        endpoint = endpoint.map {$0.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!}
         let urlString = rootURL.appending(endpoint.joined(separator: "/"))
         guard var url = URLComponents(string: urlString) else {
-            callback(nil, .InvalidURL)
+            callback(nil, .invalidURL)
             return
         }
-        
-        url.queryItems = params.map() {URLQueryItem(name: $0.key, value: $0.value)}
+
+        url.queryItems = params.map {URLQueryItem(name: $0.key, value: $0.value)}
 
         var req = URLRequest(url: url.url!)
         req.setValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
-        let task = URLSession.shared.dataTask(with: req) {
-            data, response, error in
+        let task = URLSession.shared.dataTask(with: req) { data, _, error in
             if error != nil || data == nil {
-                callback(nil, .DataTaskError)
+                callback(nil, .dataTaskError)
                 return
             }
             guard let data = data else {
-                callback(nil, .NoData)
+                callback(nil, .noData)
                 return
             }
-            
+
             callback(data, nil)
         }
         task.resume()
     }
-    
-    private func getDecodableArray<T:Decodable>(endpoint: [String], params: [String:String] = [:], callback: @escaping ([T], APIError?) -> ()) {
-        execute(endpoint: endpoint, params: params) {
-            data, err in
-            if let e = err {
-                callback([], e)
+
+    private func getDecodableArray<T: Decodable>(endpoint: [String], params: [String: String] = [:], callback: @escaping ([T], APIError?) -> Void) {
+        execute(endpoint: endpoint, params: params) { data, err in
+            if let error = err {
+                callback([], error)
                 return
             }
             do {
-                let Ts: [T] = try JSONDecoder().decode([T].self, from: data!)
-                callback(Ts, nil)
+                let decodedTs: [T] = try JSONDecoder().decode([T].self, from: data!)
+                callback(decodedTs, nil)
             } catch {
                 print(String(data: data!, encoding: .utf8) as Any)
                 print(endpoint)
                 print(error)
-                callback([], .JSONError)
+                callback([], .jsonError)
             }
         }
     }
 
-    func getLocations(name: String, callback: @escaping ([DBAPI.APIStation], APIError?) -> ()) {
-        getDecodableArray(endpoint: ["location",name], callback: callback)
+    func getLocations(name: String, callback: @escaping ([DBAPI.APIStation], APIError?) -> Void) {
+        getDecodableArray(endpoint: ["location", name], callback: callback)
     }
-    
-    func getDepartures(station: APIStation, time: Date, callback: @escaping ([DBAPI.APIDeparture], APIError?) -> ()) {
+
+    func getDepartures(station: APIStation, time: Date, callback: @escaping ([DBAPI.APIDeparture], APIError?) -> Void) {
         let formatter = ISO8601DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.formatOptions.remove(.withTimeZone)
         let formatted = formatter.string(from: time)
-        
-        getDecodableArray(endpoint: ["departureBoard", String(station.id)], params: ["date":formatted], callback: callback)
+
+        getDecodableArray(endpoint: ["departureBoard", String(station.id)], params: ["date": formatted], callback: callback)
     }
-    
-    func getTrainStopDetails(departure: APIDeparture, callback: @escaping ([DBAPI.APITrainStopDetail], APIError?) -> ()) {
+
+    func getTrainStopDetails(departure: APIDeparture, callback: @escaping ([DBAPI.APITrainStopDetail], APIError?) -> Void) {
         getDecodableArray(endpoint: ["journeyDetails", String(departure.detailsId)], callback: callback)
     }
-    
-    
-    
+
     enum APIError: Error {
-        case InvalidURL, DataTaskError, NoData, JSONError
+        case invalidURL, dataTaskError, noData, jsonError
     }
 }
