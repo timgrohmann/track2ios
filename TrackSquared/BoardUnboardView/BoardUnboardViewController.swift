@@ -17,13 +17,28 @@ class BoardUnboardViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var delayStepper: UIStepper!
 
-    var currentlySelectedStation: Station? {
-        didSet {
-            let newTitle = currentlySelectedStation?.name ?? "Bahnhof auswählen…"
-            self.selectStationButton.setTitle(newTitle, for: .normal)
-        }
-    }
+    var currentlySelectedStation: Station?
     var currentlySelectedTrain: Train?
+    var currentlySelectedDepartureDate: Date?
+
+    init(station: Station?, train: Train?, date: Date?) {
+        self.currentlySelectedStation = station
+        self.currentlySelectedTrain = train
+        self.currentlySelectedDepartureDate = date
+        super.init(nibName: "BoardUnboardViewController", bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        self.currentlySelectedTrain = nil
+        self.currentlySelectedStation = nil
+        self.currentlySelectedDepartureDate = nil
+        super.init(coder: aDecoder)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //self.selectStationButton.sendActions(for: .touchUpInside)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,35 +50,15 @@ class BoardUnboardViewController: UIViewController {
             selectTrainButton.setTitle(part.train?.stringRepresentation() ?? "", for: .normal)
             selectTrainButton.setTitleColor(UIColor.darkGray, for: .normal)
         }
-        // Do any additional setup after loading the view.
-    }
 
-    @IBAction func searchButtonPressed(_ sender: Any) {
-        let selectStation = StationSelectViewController { station in
-            if let station = station {
-                self.currentlySelectedStation = station
-            }
-            if self.currentlySelectedStation?.name == nil {
-                self.currentlySelectedStation = nil
-            }
+        let newTitle = currentlySelectedStation?.name ?? "Bahnhof auswählen…"
+        self.selectStationButton.setTitle(newTitle, for: .normal)
+
+        self.selectTrainButton.setTitle(currentlySelectedTrain?.stringRepresentation(), for: .normal)
+
+        if let date = currentlySelectedDepartureDate {
+            self.timePicker.date = date
         }
-        self.modalPresentationStyle = .formSheet
-        self.present(selectStation, animated: true, completion: nil)
-    }
-
-    @IBAction func trainSelectButtonPressed(_ sender: Any) {
-        let selectTrain = TrainSelectViewController(station: currentlySelectedStation?.toAPIStation()) { train, date in
-            if let train = train {
-                self.currentlySelectedTrain = train
-                self.selectTrainButton.setTitle(String(format: "%@ %@", Train.typeNameMap[train.type] ?? "", train.number ?? ""), for: .normal)
-            }
-
-            if let date = date {
-                self.timePicker.date = date
-            }
-        }
-        self.modalPresentationStyle = .formSheet
-        self.present(selectTrain, animated: true, completion: nil)
     }
 
     @IBAction func delayStepperChanged(_ sender: UIStepper) {
@@ -115,7 +110,7 @@ class BoardUnboardViewController: UIViewController {
 
         dataController.save()
 
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
 }

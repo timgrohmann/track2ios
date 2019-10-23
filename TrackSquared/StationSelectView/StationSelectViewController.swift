@@ -19,6 +19,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Bahnhof auswählen"
 
         //Used to get keyboard size to adjust bottom table offset
         NotificationCenter.default.addObserver(

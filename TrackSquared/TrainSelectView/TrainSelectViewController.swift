@@ -28,6 +28,8 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Zug auswählen"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Abbrechen", style: .done, target: self.navigationController, action: #selector(UINavigationController.popToRootViewController(animated:)))
 
         indicateInvalidity()
 

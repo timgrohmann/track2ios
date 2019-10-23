@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BoardUnboardViewController" customModule="TrackSquared" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmButton" destination="JHh-LX-xIW" id="b3W-P5-dqO"/>
+                <outlet property="delayDisplayLabel" destination="y5I-Pw-eVA" id="f2J-TC-0g6"/>
+                <outlet property="delayStepper" destination="sP1-sn-uSP" id="yxz-1Z-d36"/>
+                <outlet property="selectStationButton" destination="9j7-Vz-KE6" id="3mm-FV-acu"/>
+                <outlet property="selectTrainButton" destination="u9s-1U-0Hw" id="mcE-FP-geJ"/>
+                <outlet property="timePicker" destination="vnP-gB-2Bb" id="Cvt-6n-X55"/>
+                <outlet property="view" destination="re7-SD-0UF" id="Gmi-eZ-3f5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="re7-SD-0UF">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9j7-Vz-KE6">
+                    <rect key="frame" x="125.5" y="54" width="163" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Bahnhof auswählen…">
+                        <color key="titleColor" red="0.92549019610000005" green="0.0" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="N6f-PN-Yh2"/>
+                    </connections>
+                </button>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vnP-gB-2Bb">
+                    <rect key="frame" x="0.0" y="130" width="414" height="216"/>
+                </datePicker>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verspätung:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USR-ou-tc1">
+                    <rect key="frame" x="20" y="366" width="92.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10" maximumValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="sP1-sn-uSP">
+                    <rect key="frame" x="300" y="360.5" width="94" height="32"/>
+                    <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="delayStepperChanged:" destination="-1" eventType="valueChanged" id="m39-mG-qRC"/>
+                    </connections>
+                </stepper>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5I-Pw-eVA">
+                    <rect key="frame" x="247.5" y="366.5" width="42.5" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9s-1U-0Hw">
+                    <rect key="frame" x="142.5" y="87" width="129" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Zug auswählen…">
+                        <color key="titleColor" red="0.92549019610000005" green="0.0" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="trainSelectButtonPressed:" destination="-1" eventType="touchUpInside" id="2KY-ih-HIy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHh-LX-xIW" customClass="ButtonDesignable" customModule="TrackSquared" customModuleProvider="target">
+                    <rect key="frame" x="153.5" y="800" width="107" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                    <state key="normal" title="Bestätigen">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="enabledColor">
+                            <color key="value" red="0.38823529410000002" green="0.65098039220000004" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmButtonPressed:" destination="-1" eventType="touchUpInside" id="CYS-aR-Nb3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="sP1-sn-uSP" firstAttribute="leading" secondItem="y5I-Pw-eVA" secondAttribute="trailing" constant="10" id="4mr-rJ-CCA"/>
+                <constraint firstItem="USR-ou-tc1" firstAttribute="top" secondItem="vnP-gB-2Bb" secondAttribute="bottom" constant="20" id="CoC-f4-CCA"/>
+                <constraint firstItem="JHh-LX-xIW" firstAttribute="centerX" secondItem="re7-SD-0UF" secondAttribute="centerX" id="FU3-aY-074"/>
+                <constraint firstItem="vnP-gB-2Bb" firstAttribute="centerX" secondItem="XG6-pL-YhP" secondAttribute="centerX" id="G97-83-CYc"/>
+                <constraint firstItem="y5I-Pw-eVA" firstAttribute="centerY" secondItem="USR-ou-tc1" secondAttribute="centerY" id="Rsf-ey-yoz"/>
+                <constraint firstItem="9j7-Vz-KE6" firstAttribute="top" secondItem="XG6-pL-YhP" secondAttribute="top" constant="10" id="W5I-Ts-3HC"/>
+                <constraint firstItem="vnP-gB-2Bb" firstAttribute="leading" secondItem="XG6-pL-YhP" secondAttribute="leading" id="YeE-B0-RZa"/>
+                <constraint firstItem="XG6-pL-YhP" firstAttribute="bottom" secondItem="JHh-LX-xIW" secondAttribute="bottom" constant="20" id="aVZ-pj-nSg"/>
+                <constraint firstItem="u9s-1U-0Hw" firstAttribute="top" secondItem="9j7-Vz-KE6" secondAttribute="bottom" id="dcA-hT-9h9"/>
+                <constraint firstItem="USR-ou-tc1" firstAttribute="leading" secondItem="XG6-pL-YhP" secondAttribute="leading" constant="20" id="de4-7t-Iuf"/>
+                <constraint firstItem="XG6-pL-YhP" firstAttribute="trailing" secondItem="sP1-sn-uSP" secondAttribute="trailing" constant="20" id="fQg-XD-cLK"/>
+                <constraint firstItem="y5I-Pw-eVA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="USR-ou-tc1" secondAttribute="trailing" constant="10" id="gW9-Y9-0g4"/>
+                <constraint firstItem="u9s-1U-0Hw" firstAttribute="centerX" secondItem="re7-SD-0UF" secondAttribute="centerX" id="gZl-sA-D2x"/>
+                <constraint firstItem="sP1-sn-uSP" firstAttribute="centerY" secondItem="USR-ou-tc1" secondAttribute="centerY" id="rSQ-qQ-bJS"/>
+                <constraint firstItem="9j7-Vz-KE6" firstAttribute="centerX" secondItem="re7-SD-0UF" secondAttribute="centerX" id="xOy-UE-WjI"/>
+                <constraint firstItem="vnP-gB-2Bb" firstAttribute="top" secondItem="u9s-1U-0Hw" secondAttribute="bottom" constant="10" id="zka-He-4dj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="XG6-pL-YhP"/>
+            <point key="canvasLocation" x="536" y="925"/>
+        </view>
+    </objects>
+</document>

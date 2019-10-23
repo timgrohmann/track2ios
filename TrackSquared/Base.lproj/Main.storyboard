@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k63-ON-40J">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -186,7 +185,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="iwe-An-XLq" kind="show" id="xUS-n8-KBZ"/>
+                                            <action selector="enterTrainButtonPressed:" destination="9Pd-hQ-X61" eventType="touchUpInside" id="1yf-Ba-Iu4"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1E-0Y-2ij">
@@ -239,6 +238,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DGR-Rd-tMv" secondAttribute="bottom" constant="25" id="165-sG-Pos"/>
                             <constraint firstItem="iO6-yo-wNN" firstAttribute="top" secondItem="Mo3-pm-i6V" secondAttribute="bottom" id="4C9-kD-oki"/>
@@ -493,119 +493,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSb-EC-poB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1723" y="-323"/>
-        </scene>
-        <!--Einsteigen-->
-        <scene sceneID="CvN-1W-UPy">
-            <objects>
-                <viewController title="Einsteigen" id="iwe-An-XLq" customClass="BoardUnboardViewController" customModule="TrackSquared" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zBd-Nw-gpO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3r-Ej-Br0">
-                                <rect key="frame" x="106" y="98" width="163" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Bahnhof auswählen…">
-                                    <color key="titleColor" red="0.92549019607843142" green="0.0" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="searchButtonPressed:" destination="iwe-An-XLq" eventType="touchUpInside" id="7nr-0H-cRA"/>
-                                </connections>
-                            </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FM4-6J-Mm0">
-                                <rect key="frame" x="0.0" y="174" width="375" height="216"/>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verspätung:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVF-df-Gf1">
-                                <rect key="frame" x="20.000000000000007" y="410" width="92.666666666666686" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10" maximumValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-mt-H9C">
-                                <rect key="frame" x="261" y="404.66666666666669" width="94" height="32"/>
-                                <color key="tintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="delayStepperChanged:" destination="iwe-An-XLq" eventType="valueChanged" id="aVJ-cb-nP5"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHQ-vW-wUB">
-                                <rect key="frame" x="208.33333333333334" y="410.66666666666669" width="42.666666666666657" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSQ-81-A0s">
-                                <rect key="frame" x="123" y="131" width="129" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Zug auswählen…">
-                                    <color key="titleColor" red="0.92549019607843142" green="0.0" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="trainSelectButtonPressed:" destination="iwe-An-XLq" eventType="touchUpInside" id="KO5-jZ-Hyw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kt8-Tz-20I" customClass="ButtonDesignable" customModule="TrackSquared" customModuleProvider="target">
-                                <rect key="frame" x="134" y="716" width="107" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Bestätigen">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="enabledColor">
-                                        <color key="value" red="0.38823529411764707" green="0.65098039215686276" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="confirmButtonPressed:" destination="iwe-An-XLq" eventType="touchUpInside" id="2EZ-bA-qH8"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qSQ-81-A0s" firstAttribute="centerX" secondItem="zBd-Nw-gpO" secondAttribute="centerX" id="2eU-Kg-CaJ"/>
-                            <constraint firstItem="NHQ-vW-wUB" firstAttribute="centerY" secondItem="yVF-df-Gf1" secondAttribute="centerY" id="4XN-ML-3CZ"/>
-                            <constraint firstItem="Kt8-Tz-20I" firstAttribute="centerX" secondItem="zBd-Nw-gpO" secondAttribute="centerX" id="8bI-6e-RGB"/>
-                            <constraint firstItem="wcd-mt-H9C" firstAttribute="centerY" secondItem="yVF-df-Gf1" secondAttribute="centerY" id="Ha5-ic-OBK"/>
-                            <constraint firstItem="8H2-C2-UhC" firstAttribute="bottom" secondItem="Kt8-Tz-20I" secondAttribute="bottom" constant="20" id="Hh0-7T-eZ4"/>
-                            <constraint firstItem="X3r-Ej-Br0" firstAttribute="top" secondItem="8H2-C2-UhC" secondAttribute="top" constant="10" id="I0T-Rp-Lb1"/>
-                            <constraint firstItem="NHQ-vW-wUB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yVF-df-Gf1" secondAttribute="trailing" constant="10" id="JFc-l2-lm4"/>
-                            <constraint firstItem="FM4-6J-Mm0" firstAttribute="leading" secondItem="8H2-C2-UhC" secondAttribute="leading" id="VDz-WM-msS"/>
-                            <constraint firstItem="yVF-df-Gf1" firstAttribute="top" secondItem="FM4-6J-Mm0" secondAttribute="bottom" constant="20" id="d5x-SN-KKX"/>
-                            <constraint firstItem="8H2-C2-UhC" firstAttribute="trailing" secondItem="wcd-mt-H9C" secondAttribute="trailing" constant="20" id="hO7-S3-AJy"/>
-                            <constraint firstItem="FM4-6J-Mm0" firstAttribute="top" secondItem="qSQ-81-A0s" secondAttribute="bottom" constant="10" id="i3Y-xn-acj"/>
-                            <constraint firstItem="wcd-mt-H9C" firstAttribute="leading" secondItem="NHQ-vW-wUB" secondAttribute="trailing" constant="10" id="idM-h1-YPG"/>
-                            <constraint firstItem="FM4-6J-Mm0" firstAttribute="centerX" secondItem="8H2-C2-UhC" secondAttribute="centerX" id="j4Q-bT-zFb"/>
-                            <constraint firstItem="X3r-Ej-Br0" firstAttribute="centerX" secondItem="zBd-Nw-gpO" secondAttribute="centerX" id="jPQ-R6-cXG"/>
-                            <constraint firstItem="qSQ-81-A0s" firstAttribute="top" secondItem="X3r-Ej-Br0" secondAttribute="bottom" id="sSa-0a-2sn"/>
-                            <constraint firstItem="yVF-df-Gf1" firstAttribute="leading" secondItem="8H2-C2-UhC" secondAttribute="leading" constant="20" id="zO0-Y2-O4m"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="8H2-C2-UhC"/>
-                    </view>
-                    <connections>
-                        <outlet property="confirmButton" destination="Kt8-Tz-20I" id="y5y-Nn-Blj"/>
-                        <outlet property="delayDisplayLabel" destination="NHQ-vW-wUB" id="q5q-E6-ZRM"/>
-                        <outlet property="delayStepper" destination="wcd-mt-H9C" id="q0T-GD-o6x"/>
-                        <outlet property="selectStationButton" destination="X3r-Ej-Br0" id="jkW-xl-VPG"/>
-                        <outlet property="selectTrainButton" destination="qSQ-81-A0s" id="ecd-Ps-Cfw"/>
-                        <outlet property="timePicker" destination="FM4-6J-Mm0" id="2gj-sr-dxe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vfy-2O-yEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="974" y="335"/>
         </scene>
     </scenes>
 </document>
