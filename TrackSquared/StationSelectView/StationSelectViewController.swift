@@ -20,6 +20,7 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Bahnhof auswählen"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Abbrechen", style: .done, target: self.navigationController, action: #selector(UINavigationController.popToRootViewController(animated:)))
 
         //Used to get keyboard size to adjust bottom table offset
         NotificationCenter.default.addObserver(
@@ -39,10 +40,6 @@ class StationSelectViewController: UIViewController, UITableViewDelegate, UITabl
     required init?(coder aDecoder: NSCoder) {
         self.selectedCallback = {_ in}
         super.init(coder: aDecoder)
-    }
-
-    @IBAction func abortButtonPressed(_ sender: Any) {
-        finishedWithResult(nil)
     }
 
     func finishedWithResult(_ stat: Station?) {

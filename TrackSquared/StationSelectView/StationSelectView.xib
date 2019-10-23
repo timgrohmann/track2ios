@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,15 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkY-EA-P0A">
-                    <rect key="frame" x="279" y="44" width="76" height="30"/>
-                    <state key="normal" title="Abbrechen"/>
-                    <connections>
-                        <action selector="abortButtonPressed:" destination="-1" eventType="touchUpInside" id="vfX-ag-pP9"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LYW-3W-xpl">
-                    <rect key="frame" x="0.0" y="128" width="375" height="684"/>
+                    <rect key="frame" x="0.0" y="108" width="375" height="704"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="5p1-OA-2JT"/>
@@ -37,7 +29,7 @@
                     </connections>
                 </tableView>
                 <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Suchen…" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="svg-dc-j2v">
-                    <rect key="frame" x="20" y="74" width="335" height="34"/>
+                    <rect key="frame" x="20" y="54" width="335" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -49,13 +41,11 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="svg-dc-j2v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1dB-kf-XDV"/>
-                <constraint firstItem="wkY-EA-P0A" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4cf-2G-T5j"/>
                 <constraint firstAttribute="bottom" secondItem="LYW-3W-xpl" secondAttribute="bottom" id="AOL-cu-asJ"/>
                 <constraint firstItem="LYW-3W-xpl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="CoJ-Fv-cJO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="svg-dc-j2v" secondAttribute="trailing" constant="20" id="QGY-P0-2WY"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wkY-EA-P0A" secondAttribute="trailing" constant="20" id="R0m-zK-nkV"/>
+                <constraint firstItem="svg-dc-j2v" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="SjI-46-WP7"/>
                 <constraint firstItem="LYW-3W-xpl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TwI-hc-Bu7"/>
-                <constraint firstItem="svg-dc-j2v" firstAttribute="top" secondItem="wkY-EA-P0A" secondAttribute="bottom" id="kvh-36-sPL"/>
                 <constraint firstItem="LYW-3W-xpl" firstAttribute="top" secondItem="svg-dc-j2v" secondAttribute="bottom" constant="20" id="ubV-G9-fmo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -8,11 +8,10 @@
 
 import UIKit
 
-class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var descriptorLabel: UILabel!
     @IBOutlet weak var buttonBottomLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var trainTableView: UITableView!
 
@@ -72,7 +71,6 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         if let trainName = parts {
             descriptorLabel.text = String(format: "%@ %@", trainName.type, trainName.number)
             descriptorLabel.textColor = UIColor.black
-            chooseButton.isEnabled = true
         } else {
             indicateInvalidity()
         }
@@ -123,29 +121,12 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
     func indicateInvalidity() {
         descriptorLabel.text = "Nicht gültig!"
         descriptorLabel.textColor = UIColor.red
-        chooseButton.isEnabled = false
     }
 
     func finishedWithResult(_ stat: Train?, date: Date?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
         selectedCallback(stat, date)
-    }
-
-    @IBAction func abortButtonPressed(_ sender: Any) {
-        finishedWithResult(nil, date: nil)
-    }
-
-    @IBAction func chooseButtonPressed(_ sender: Any) {
-        if let nameDesc = makeParts(text: searchTextField.text ?? "") {
-            let traintype = Train.typeMap[nameDesc.type.uppercased()] ?? .NE
-            let train = dataController.getTrain(number: nameDesc.number, trainType: traintype) ?? dataController.makeTrain()
-
-            train.number = nameDesc.number
-            train.type = traintype
-
-            finishedWithResult(train, date: selectedStop?.departure!.timestamp)
-        }
     }
 
     @IBAction func laterButtonPresse(_ sender: Any) {
@@ -223,5 +204,24 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         tableFadeOutLayer?.name = "Table transparency"
 
         view.layer.addSublayer(tableFadeOutLayer!)
+    }
+
+    // MARK: - Text Field
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField != searchTextField { return true }
+
+        if let nameDesc = makeParts(text: searchTextField.text ?? "") {
+            let traintype = Train.typeMap[nameDesc.type.uppercased()] ?? .NE
+            let train = dataController.getTrain(number: nameDesc.number, trainType: traintype) ?? dataController.makeTrain()
+
+            train.number = nameDesc.number
+            train.type = traintype
+
+            finishedWithResult(train, date: selectedStop?.departure!.timestamp)
+            return true
+        } else {
+            return false
+        }
     }
 }
