@@ -178,9 +178,15 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedStop = departures[indexPath.row]
-        if let trainName = selectedStop?.train.getDisplayName() {
-            searchTextField.text = trainName
-            processNewTrain(trainName: trainName)
+        if let trainName = selectedStop?.train.getDisplayName(),
+            let nameDesc = makeParts(text: trainName) {
+            let traintype = Train.typeMap[nameDesc.type.uppercased()] ?? .NE
+            let train = dataController.getTrain(number: nameDesc.number, trainType: traintype) ?? dataController.makeTrain()
+
+            train.number = nameDesc.number
+            train.type = traintype
+            dataController.save()
+            finishedWithResult(train, date: selectedStop?.departure!.timestamp)
         }
     }
 
