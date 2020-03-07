@@ -78,6 +78,17 @@ extension TimetablesAPI {
             self.line = element.attribute(by: "l")?.text
             self.path = element.attribute(by: "ppth")?.text.split(separator: "|").map {String($0)} ?? []
         }
+
+        /**
+         * Returns the number of minutes of delay for this StopEvent.
+         */
+        func getDelay() -> Int {
+            if let changeTimestamp = self.change?.timestamp {
+                let diff = changeTimestamp.timeIntervalSince(self.timestamp)
+                return Int(diff / 60.0)
+            }
+            return 0
+        }
     }
 
     struct StopChange {

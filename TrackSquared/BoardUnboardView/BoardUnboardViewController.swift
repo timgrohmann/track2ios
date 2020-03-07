@@ -19,19 +19,19 @@ class BoardUnboardViewController: UIViewController {
 
     var currentlySelectedStation: Station?
     var currentlySelectedTrain: Train?
-    var currentlySelectedDepartureDate: Date?
+    var currentlySelectedDepartureStop: TimetablesAPI.Stop?
 
-    init(station: Station?, train: Train?, date: Date?) {
+    init(station: Station?, train: Train?, stop: TimetablesAPI.Stop?) {
         self.currentlySelectedStation = station
         self.currentlySelectedTrain = train
-        self.currentlySelectedDepartureDate = date
+        self.currentlySelectedDepartureStop = stop
         super.init(nibName: "BoardUnboardViewController", bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
         self.currentlySelectedTrain = nil
         self.currentlySelectedStation = nil
-        self.currentlySelectedDepartureDate = nil
+        self.currentlySelectedDepartureStop = nil
         super.init(coder: aDecoder)
     }
 
@@ -56,8 +56,10 @@ class BoardUnboardViewController: UIViewController {
 
         self.selectTrainButton.setTitle(currentlySelectedTrain?.stringRepresentation(), for: .normal)
 
-        if let date = currentlySelectedDepartureDate {
-            self.timePicker.date = date
+        if let departure = currentlySelectedDepartureStop?.departure {
+            self.timePicker.date = departure.timestamp
+            self.delayStepper.value = Double(departure.getDelay())
+            delayStepperChanged(delayStepper)
         }
     }
 

@@ -15,7 +15,7 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var trainTableView: UITableView!
 
-    let selectedCallback: (Train?, Date?) -> Void
+    let selectedCallback: (Train?, TimetablesAPI.Stop?) -> Void
     let station: DBAPI.APIStation?
 
     var departures: [TimetablesAPI.Stop] = []
@@ -47,7 +47,7 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         //addMaskLayerToTableView()
     }
 
-    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?, Date?) -> Void) {
+    init(station: DBAPI.APIStation?, selectedCallback: @escaping (Train?, TimetablesAPI.Stop?) -> Void) {
         self.selectedCallback = selectedCallback
         self.station = station
         super.init(nibName: "TrainSelectViewController", bundle: nil)
@@ -123,10 +123,10 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
         descriptorLabel.textColor = UIColor.red
     }
 
-    func finishedWithResult(_ stat: Train?, date: Date?) {
+    func finishedWithResult(_ stat: Train?, stop: TimetablesAPI.Stop?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
         searchTextField.resignFirstResponder()
-        selectedCallback(stat, date)
+        selectedCallback(stat, stop)
     }
 
     @IBAction func laterButtonPresse(_ sender: Any) {
@@ -191,7 +191,7 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             train.number = nameDesc.number
             train.type = traintype
             dataController.save()
-            finishedWithResult(train, date: selectedStop?.departure!.timestamp)
+            finishedWithResult(train, stop: selectedStop)
         }
     }
 
@@ -229,7 +229,7 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             train.number = nameDesc.number
             train.type = traintype
 
-            finishedWithResult(train, date: selectedStop?.departure!.timestamp)
+            finishedWithResult(train, stop: selectedStop)
             return true
         } else {
             return false

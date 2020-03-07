@@ -76,9 +76,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func presentBoardingViews() {
         let selectStation = StationSelectViewController { station in
             if let station = station {
-                let selectTrain = TrainSelectViewController(station: station.toAPIStation()) { train, date in
+                let selectTrain = TrainSelectViewController(station: station.toAPIStation()) { train, stop in
                     if let train = train {
-                        let boardController = BoardUnboardViewController(station: station, train: train, date: date)
+                        let boardController = BoardUnboardViewController(station: station, train: train, stop: stop)
                         self.navigationController?.pushViewController(boardController, animated: true)
                     }
                 }
@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let station = station {
                 // assumes the user clicks leave right after leaving
                 // therefore the current date is the best guess
-                let boardController = BoardUnboardViewController(station: station, train: part.train, date: Date())
+                let boardController = BoardUnboardViewController(station: station, train: part.train, stop: nil)
                 self.navigationController?.pushViewController(boardController, animated: true)
             }
         }
