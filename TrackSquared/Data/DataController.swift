@@ -12,7 +12,8 @@ import CoreData
 class DataController {
     let ctx: NSManagedObjectContext
     let api = DBAPI()
-    let timetablesAPI = TimetablesAPI()
+
+    let tt = TimetablesDataController()
 
     init(ctx: NSManagedObjectContext) {
         self.ctx = ctx

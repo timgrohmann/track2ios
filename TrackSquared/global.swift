@@ -23,3 +23,14 @@ var dataController: DataController {
 /*var managedObjectContext: NSManagedObjectContext{
     return delegate.persistentContainer.viewContext
 }*/
+
+struct NilError: Error {}
+
+extension Optional {
+    func unwrap(or error: @autoclosure () -> Error = NilError()) throws -> Wrapped {
+        switch self {
+        case .some(let w): return w
+        case .none: throw error()
+        }
+    }
+}

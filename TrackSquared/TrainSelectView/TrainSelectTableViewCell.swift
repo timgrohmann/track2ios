@@ -31,9 +31,25 @@ class TrainSelectTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .none
+
+        let minutesFormatter = DateComponentsFormatter()
+        minutesFormatter.allowedUnits = [.hour, .minute]
+        minutesFormatter.unitsStyle = .abbreviated
+
+
         if let depTime = departure?.departure?.timestamp {
-            departureTimeLabel.text = dateFormatter.string(from: depTime)
+            if let changedDepTime = departure?.departure?.change?.timestamp,
+                let changeDiff = Optional(depTime.distance(to: changedDepTime)), changeDiff > 0 {
+                let changeDiff = depTime.distance(to: changedDepTime)
+                departureTimeLabel.text = dateFormatter.string(from: changedDepTime) + " +" + minutesFormatter.string(from: changeDiff)!
+                departureTimeLabel.textColor = .red
+            } else {
+                departureTimeLabel.text = dateFormatter.string(from: depTime)
+                departureTimeLabel.textColor = .white
+            }
         }
+
+
     }
 
     func displayDeparture(_ departure: TimetablesAPI.Stop, at station: DBAPI.APIStation?) {

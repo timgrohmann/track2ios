@@ -18,8 +18,8 @@ extension TimetablesAPI {
     struct Stop {
         let id: String
         let train: TrainRef
-        let arrival: StopEvent?
-        let departure: StopEvent?
+        var arrival: StopEvent?
+        var departure: StopEvent?
 
         init(xml: XMLIndexer) throws {
             if let element = xml.element,
@@ -58,6 +58,8 @@ extension TimetablesAPI {
         let line: String?
         let path: [String]
 
+        var change: StopChangeEvent?
+
         static var timestampFormatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyMMddHHmm"
@@ -75,6 +77,46 @@ extension TimetablesAPI {
             self.plattform = element.attribute(by: "pp")?.text
             self.line = element.attribute(by: "l")?.text
             self.path = element.attribute(by: "ppth")?.text.split(separator: "|").map {String($0)} ?? []
+        }
+    }
+
+    struct StopChange {
+        let stopId: String
+
+        let arrival: StopChangeEvent?
+        let departure: StopChangeEvent?
+
+        init(xml: XMLIndexer) throws {
+            let element = try xml.element.unwrap(or: APIError.malformedXML)
+            self.stopId = try (element.attribute(by: "id")?.text).unwrap(or: APIError.malformedXML)
+
+            if xml["ar"].element != nil {
+                self.arrival = try? StopChangeEvent(xml: xml["ar"])
+            } else {
+                self.arrival = nil
+            }
+
+            if xml["dp"].element != nil {
+               self.departure = try? StopChangeEvent(xml: xml["dp"])
+            } else {
+                self.departure = nil
+            }
+        }
+    }
+
+    struct StopChangeEvent {
+        let timestamp: Date?
+        let plattform: String?
+
+        init(xml: XMLIndexer) throws {
+            guard let element = xml.element else { throw APIError.malformedXML }
+            if let dateString = element.attribute(by: "ct")?.text,
+                let date = StopEvent.timestampFormatter.date(from: dateString) {
+                self.timestamp = date
+            } else {
+                self.timestamp = nil
+            }
+            self.plattform = element.attribute(by: "cp")?.text
         }
     }
 }

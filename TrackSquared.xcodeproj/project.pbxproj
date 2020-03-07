@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07C2B549F4822B50517313EA /* Pods_TrackSquared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCA3931B6DE5E2872C28F45 /* Pods_TrackSquared.framework */; };
+		181622BC23E70D6F00529A16 /* TimetablesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181622BB23E70D6F00529A16 /* TimetablesDataController.swift */; };
 		181E690B21AD5BF400C0141B /* TrackSquared.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 181E690921AD5BF400C0141B /* TrackSquared.xcdatamodeld */; };
 		181EDFCB21A02594000105C2 /* TrainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EDFCA21A02594000105C2 /* TrainEvent.swift */; };
 		182638B023577BFD0073F98B /* BoardUnboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182638AF23577BFD0073F98B /* BoardUnboardViewController.xib */; };
@@ -31,6 +32,7 @@
 		18B8E89723562DB4006277CE /* TimetablesAPIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */; };
 		18CF674621A1D41700F10BFF /* JourneyArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */; };
 		18CF674821A1D44600F10BFF /* JourneyArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */; };
+		18D216D5238E9B9D00AF51D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D216D4238E9B9D00AF51D8 /* GoogleService-Info.plist */; };
 		18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */; };
 		18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D37CB121996DDE00372162 /* StationSelectViewController.swift */; };
 		18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D37CB221996DDE00372162 /* StationSelectView.xib */; };
@@ -64,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181622BB23E70D6F00529A16 /* TimetablesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesDataController.swift; sourceTree = "<group>"; };
 		181E690A21AD5BF400C0141B /* TrackSquared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackSquared.xcdatamodel; sourceTree = "<group>"; };
 		181EDFCA21A02594000105C2 /* TrainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEvent.swift; sourceTree = "<group>"; };
 		182638AF23577BFD0073F98B /* BoardUnboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardUnboardViewController.xib; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 		18B8E89623562DB4006277CE /* TimetablesAPIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablesAPIErrors.swift; sourceTree = "<group>"; };
 		18CF674521A1D41700F10BFF /* JourneyArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveViewController.swift; sourceTree = "<group>"; };
 		18CF674721A1D44600F10BFF /* JourneyArchiveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyArchiveTableViewCell.swift; sourceTree = "<group>"; };
+		18D216D4238E9B9D00AF51D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D37CAF21996D4100372162 /* BoardUnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardUnboardViewController.swift; sourceTree = "<group>"; };
 		18D37CB121996DDE00372162 /* StationSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSelectViewController.swift; sourceTree = "<group>"; };
 		18D37CB221996DDE00372162 /* StationSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationSelectView.xib; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 		18E071122196D1D600761D4D /* TrackSquared */ = {
 			isa = PBXGroup;
 			children = (
+				18D216D4238E9B9D00AF51D8 /* GoogleService-Info.plist */,
 				182638AE23577BAB0073F98B /* BoardUnboardView */,
 				1856124F21A6CA660041AD39 /* DBAPI */,
 				18E071222196D1D700761D4D /* Info.plist */,
@@ -265,6 +270,7 @@
 				18F90634219C266300505A9A /* Train.swift */,
 				181EDFCA21A02594000105C2 /* TrainEvent.swift */,
 				183E443421AD2B990032E0E2 /* Station.swift */,
+				181622BB23E70D6F00529A16 /* TimetablesDataController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				18E0710D2196D1D600761D4D /* Frameworks */,
 				18E0710E2196D1D600761D4D /* Resources */,
 				2154B6DEBD203E655D4A0640 /* [CP] Embed Pods Frameworks */,
+				9AA4D1862B4F61B6516ACB17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D216D5238E9B9D00AF51D8 /* GoogleService-Info.plist in Resources */,
 				185E63582355C2D60086B88D /* Podfile in Resources */,
 				18E071212196D1D700761D4D /* LaunchScreen.storyboard in Resources */,
 				18D37CB421996DDE00372162 /* StationSelectView.xib in Resources */,
@@ -467,6 +475,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9AA4D1862B4F61B6516ACB17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackSquared/Pods-TrackSquared-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackSquared/Pods-TrackSquared-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackSquared/Pods-TrackSquared-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A3C9AE24655200C8A3432232 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,6 +543,7 @@
 				18D37CB321996DDE00372162 /* StationSelectViewController.swift in Sources */,
 				18EE7F0421AC304C004DF366 /* DBAPIDataTypes.swift in Sources */,
 				18D37CB021996D4100372162 /* BoardUnboardViewController.swift in Sources */,
+				181622BC23E70D6F00529A16 /* TimetablesDataController.swift in Sources */,
 				186C57E021A2BA0600F3BC04 /* JourneyHistoryPartTableViewCell.swift in Sources */,
 				185E7B762355C6610047E44D /* TimetablesAPI.swift in Sources */,
 				183E443521AD2B990032E0E2 /* Station.swift in Sources */,

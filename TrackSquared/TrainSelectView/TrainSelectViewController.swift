@@ -144,7 +144,7 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
 
-        dataController.timetablesAPI.getPlan(evaNo: String(station.id), date: Date().addingTimeInterval(60.0 * 60.0 * Double(hourOffset))) { result in
+        /*dataController.timetablesAPI.getPlan(evaNo: String(station.id), date: Date().addingTimeInterval(60.0 * 60.0 * Double(hourOffset))) { result in
             switch result {
             case .success(let stops):
                 self.departures = stops.filter { $0.departure != nil }
@@ -155,6 +155,11 @@ class TrainSelectViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.async {
                 self.trainTableView.reloadData()
             }
+        }*/
+
+        dataController.tt.getRealTimeDepartures(for: String(station.id), offset: hourOffset) { departures in
+            self.departures = departures
+            self.trainTableView.reloadData()
         }
     }
 

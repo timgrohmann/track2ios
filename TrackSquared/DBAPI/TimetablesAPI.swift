@@ -86,4 +86,18 @@ class TimetablesAPI {
             return stops
         }
     }
+
+    func getChanges(evaNo: String, completion: @escaping (Result<[StopChange], Error>) -> Void) {
+        getFromAPI(path: ["fchg", evaNo], completion: completion) { response in
+            guard let data = response.data else {
+                throw DBAPI.APIError.noData
+            }
+            let xml = SWXMLHash.parse(data)
+
+            let stops: [StopChange] = xml["timetable"]["s"].all.compactMap { try? StopChange(xml: $0) }
+            return stops
+        }
+    }
+
+    
 }

@@ -9,6 +9,9 @@ target 'TrackSquared' do
     pod 'MarqueeLabel'
     pod 'SWXMLHash', '~> 5.0.0'
     pod 'SwiftLint'
+    
+    pod 'Firebase/Analytics'
+    pod 'FirebaseUI'
 
     target 'TrackSquaredTests' do
         inherit! :search_paths
